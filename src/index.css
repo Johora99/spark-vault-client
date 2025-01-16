@@ -12,5 +12,5 @@
 }
 
 .input-field{
-  @apply w-full bg-transparent border-b-[3px] border-b-appleGreen mt-2 mb-8 focus:outline-none focus:border-[2px] focus:border-t-0 focus:border-appleGreen rounded-lg py-3 px-5 focus:bg-transparent
+  @apply w-full bg-transparent border-b-[3px] border-b-appleGreen mt-2 focus:outline-none focus:border-[2px] focus:border-t-0 focus:border-appleGreen rounded-lg py-3 px-5 focus:bg-transparent
 }

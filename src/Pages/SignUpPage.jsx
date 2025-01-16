@@ -3,18 +3,21 @@ import google from '../assets/google.png'
 import { IoMdLogIn } from "react-icons/io"
 import Divider from "../ShareComponents/Divider"
 import { BackgroundBeams } from "../Components/ui/BackgroundBeams"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
+import useAuth from "../Hooks/useAuth"
 
 export default function SignUpPage() {
-  const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm()
+  const {register,handleSubmit,watch,formState: { errors },reset} = useForm();
+  const {creatUser,googleSignIn,handleUpdate} = useAuth();
+  const navigate = useNavigate();
      const onSubmit = (data) =>{  
-  
-      console.log(data)
+        creatUser(data.email,data.password)
+      .then(res=>{
+        console.log(res)
+        
+      }).catch(err=>{
+        console.log(err)
+      })
     }
   return (
   
@@ -36,19 +39,33 @@ export default function SignUpPage() {
                 <div className="label">
                <span className="label-text text-lg font-medium">Name</span>
                </div>
-               <input type="text" placeholder="Enter Your Name" className="input-field" />
+               <input type="text" {...register("name",{ required: true,maxLength: 20 })} name="name" placeholder="Enter Your Name" className="input-field" />
+               {errors.name && errors.name.type === 'required' && <span className=" text-red-500 mt-1 inline-block">Enter Your name</span>}
+          {
+        errors.name && errors.name.type === 'maxLength' && <span className=" text-red-500 mt-1 inline-block">Name should be a maximum of 20 characters</span>
+          }
               </label>
                <label htmlFor="">
                 <span className="label-text text-lg font-medium">Email Address</span>
-                <input type="email" placeholder="Enter Your Email Address" className="input-field" />
+                <input type="email" {...register("email",{ required: true })} name="email" placeholder="Enter Your Email Address" className="input-field" />
+                {errors.email && <span className=" text-red-500 mt-1 inline-block">Enter Your email</span>}
                </label>
                 </div>
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <label htmlFor="">
+                <label htmlFor="" className="mt-8">
                 <span className="label-text text-lg font-medium">Password</span>
-                <input type="password" placeholder="Enter Your Password" className="input-field" />
+                <input type="password" {...register("password",{required:true,minLength :{
+        value:8,
+        message:"Password must be at least 8 characters",
+      },pattern:{
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).+$/,
+        message :"Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      }})} name="password" placeholder="Enter Your Password" className="input-field" />
+      {
+        errors.password && <p className=" text-red-500 my-2 w-full inline-block">{errors.password.message}</p>
+      }
                </label>
-                <label htmlFor="">
+                <label htmlFor="" className="mt-8">
                   <span className="label-text text-lg font-medium">Upload Image</span>
               <input 
              type="file" 

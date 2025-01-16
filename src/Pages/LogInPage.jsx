@@ -35,14 +35,14 @@ export default function LogInPage() {
             <div className="label">
            <span className="label-text text-lg font-medium">Email Address</span>
            </div>
-           <input type="text" placeholder="Enter Your Email Address" className="input-field" />
+           <input type="text" placeholder="Enter Your Email Address" className="input-field mb-8" />
           </label>
-           <label htmlFor="">
+           <label htmlFor="" className="">
             <span className="label-text text-lg font-medium">Password</span>
             <input type="text" placeholder="Enter Your Password" className="input-field" />
            </label>
           
-           <button className="btn-Style btn-grad btn-grad:hover">Log In <IoMdLogIn className="text-white text-2xl"/></button>
+           <button className="btn-Style btn-grad btn-grad:hover mt-5">Log In <IoMdLogIn className="text-white text-2xl"/></button>
           </form>
            <p className="mt-5">First time on <span className="color-text"> SparkVault </span> ? Let's get you started!    <Link to='/signUp' className="color-text"> Sign Up </Link></p>
         
