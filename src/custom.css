@@ -42,7 +42,7 @@
 }
 
 .color-text{
-background-image: linear-gradient(to right, #614385 0%, #516395  51%, #614385  100%);
+background-image: linear-gradient(to right, #614385 0%, rgb(81, 99, 149)  51%, #614385  100%);
   -webkit-background-clip: text; /* Required for clipping the background to the text */
   -webkit-text-fill-color: transparent;
 }
