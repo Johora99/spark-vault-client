@@ -1,5 +1,5 @@
 import Slider from "../Slider/Slider";
-import { Button } from "../ui/Button";
+
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 
 
@@ -11,14 +11,18 @@ export default function Hero() {
           <div>
             <TextGenerateEffect words={'Discover, Share, and Illuminate Tech Innovations'}></TextGenerateEffect>
             <p className="text-white mt-10 font-light">Discover, share, and celebrate the latest tech products and ideas. SparkVault is a thriving community where innovators and enthusiasts connect to explore groundbreaking creations, spark collaborations, and inspire change.</p>
-            <Button>
-              Explore More
-            </Button>
+        
+                <button className="btn-grad py-3 px-10 mt-10 shadow-custom">
+                  Explore More
+                
+                  </button>
           </div>
+    
           <div>
             <Slider></Slider>
           </div>
        </div>
+          
   </div>
   )
 }

@@ -5,7 +5,7 @@
 }
 
 /* gradient button  */       
-.btn-grad {background-image: linear-gradient(to right, #614385 0%, #516395  51%, #614385  100%)}          
+.btn-grad {background-image: linear-gradient(to right, #614385 0%, rgb(81, 99, 149)  51%, #614385  100%)}          
 .btn-grad {
 
     text-align: center;
@@ -21,6 +21,11 @@
     color: #fff;
     text-decoration: none;
         }
+        .shadow-custom {
+  box-shadow: 0 4px 30px rgba(97,67,133,0.6), 
+              0 8px 30px rgba(120, 75, 160, 0.2), 
+              0 12px 45px rgba(43, 134, 197, 0.15);
+}
          
 .divider-primary:before,.divider-primary:after {
   background-color: #70B02B;

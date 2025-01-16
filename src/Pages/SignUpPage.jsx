@@ -1,36 +1,44 @@
 import { useForm } from "react-hook-form"
-import google from '../assets/google.png'
+
 import { IoMdLogIn } from "react-icons/io"
 import Divider from "../ShareComponents/Divider"
 import { BackgroundBeams } from "../Components/ui/BackgroundBeams"
 import { Link, useNavigate } from "react-router"
 import useAuth from "../Hooks/useAuth"
+import { imageData } from "@/api/utilities/imagebb"
+import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
 
 export default function SignUpPage() {
   const {register,handleSubmit,watch,formState: { errors },reset} = useForm();
-  const {creatUser,googleSignIn,handleUpdate} = useAuth();
+  const {creatUser,googleSignIn,userUpdateProfile} = useAuth();
   const navigate = useNavigate();
-     const onSubmit = (data) =>{  
+     const onSubmit = async (data) =>{  
+      const name = data.name;
+        const image = data.file[0]
+        const photoURL = await imageData(image);
         creatUser(data.email,data.password)
       .then(res=>{
-        console.log(res)
+       userUpdateProfile(name,photoURL)
+        navigate('/')
         
       }).catch(err=>{
         console.log(err)
       })
+      console.log(data.name)
+    
     }
   return (
   
       <BackgroundBeams>
         <div className="w-full">
            <div className="mainContainer flex items-center justify-center">
-              <div className="lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-10 text-white">
+              <div className="lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 mt-10 text-white">
                 <div>
                   <h2 className="text-4xl font-semibold text-white">Welcome <span className="color-text">Back!</span></h2>
                   <p className="mt-3 mb-20 text-lg ">Log in to your account to continue exploring.</p>
                 </div>
                 <div>
-                  <button className="flex items-center gap-2 border-[1px] border-appleGreen py-1 px-5 rounded-lg mt-5"><img src={google} alt="" className="w-10"/> Sign Up With Google</button>
+                 <GoogleSignIn></GoogleSignIn>
                 </div>
                 <Divider text={'Or create account with email'}></Divider>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -68,11 +76,11 @@ export default function SignUpPage() {
                 <label htmlFor="" className="mt-8">
                   <span className="label-text text-lg font-medium">Upload Image</span>
               <input 
-             type="file" 
+             type="file" {...register("file",{ required: true })} name="file"
              className="mb-5 w-full text-sm text-gray-500 file:mr-5  file:border-0 file:text-appleGreen file:bg-transparent file:cursor-pointer file:transition-all  rounded-lg focus:outline-none focus:ring-2 focus:ring-appleGreen focus:border-appleGreen input-field"
                />
                 
-
+               {errors.email && <span className=" text-red-500 mt-1 inline-block"> Upload Your Image</span>}
            </label>
                </div>
                <button className="btn-Style btn-grad btn-grad:hover">Sign Up<IoMdLogIn className="text-white text-2xl"/></button>

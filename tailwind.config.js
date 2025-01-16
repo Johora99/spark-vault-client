@@ -8,16 +8,33 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			appleGreen: 'rgb(97, 67, 133, 0.5)',
-
-
+  			appleGreen: 'rgb(97, 67, 133)'
+  		},
+  		plugins: [
+  			'require(',
+  			'daisyui',
+  			')',
+  			'require(',
+  			'tailwindcss-textshadow',
+  			')'
+  		],
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		animation: {
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear'
+  		},
+  		keyframes: {
+  			'border-beam': {
+  				'100%': {
+  					'offset-distance': '100%'
+  				}
+  			}
+  		}
+  	}
   },
-  plugins: [
-    require('daisyui'),
     
-    
-],
-}
-  }
 }
 

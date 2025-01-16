@@ -1,12 +1,18 @@
 import { useForm } from "react-hook-form"
-import google from '../assets/google.png'
 import { IoMdLogIn } from "react-icons/io"
-
-import { Link } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import Divider from "../ShareComponents/Divider"
 import { BackgroundBeams } from "../Components/ui/BackgroundBeams"
+import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
+import useAuth from "@/Hooks/useAuth"
+import { useState } from "react"
+
 
 export default function LogInPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [error,setError] = useState('')
+  const {userLogIn} = useAuth();
   const {
     register,
     handleSubmit,
@@ -14,8 +20,16 @@ export default function LogInPage() {
     formState: { errors },
   } = useForm()
    const onSubmit = (data) =>{  
-
-    console.log(data)
+        userLogIn(data.email,data.password)
+        .then(res=>{
+          if(location.state?.from){
+          navigate(location.state.from)
+        }else{
+          navigate('/')
+        }
+        }).catch(err =>{
+      setError(err)
+    })
   }
   return (
     <BackgroundBeams>
@@ -26,7 +40,7 @@ export default function LogInPage() {
               <p className="mt-3 mb-20 text-lg ">Log in to your account to continue exploring.</p>
             </div>
             <div>
-              <button className="flex items-center gap-2 border-[1px] border-appleGreen py-1 px-5 rounded-lg"><img src={google} alt="" className="w-10"/> Log In With Google</button>
+              <GoogleSignIn></GoogleSignIn>
             </div>
       
             <Divider text={'Or login with email'}></Divider>
@@ -35,17 +49,24 @@ export default function LogInPage() {
             <div className="label">
            <span className="label-text text-lg font-medium">Email Address</span>
            </div>
-           <input type="text" placeholder="Enter Your Email Address" className="input-field mb-8" />
+           <input type="text" {...register("email",{ required: true })} name="email" placeholder="Enter Your Email Address" className="input-field mb-8" />
+           {errors.email && <span className=" text-red-500 mt-1 inline-block">Enter Your email</span>}
           </label>
            <label htmlFor="" className="">
             <span className="label-text text-lg font-medium">Password</span>
-            <input type="text" placeholder="Enter Your Password" className="input-field" />
+            <input type="password" {...register("password",{ required: true })} name="password" placeholder="Enter Your Password" className="input-field" />
+            {errors.password && <span className=" text-red-500 mt-1 inline-block">Enter Your Password</span>}
            </label>
           
            <button className="btn-Style btn-grad btn-grad:hover mt-5">Log In <IoMdLogIn className="text-white text-2xl"/></button>
+           <div>
+          {
+           error && <p className="text-red-500 mt-2">Please check your credentials and try again.</p>
+             }
+          </div>
           </form>
            <p className="mt-5">First time on <span className="color-text"> SparkVault </span> ? Let's get you started!    <Link to='/signUp' className="color-text"> Sign Up </Link></p>
-        
+    
           </div>
        </div>
 

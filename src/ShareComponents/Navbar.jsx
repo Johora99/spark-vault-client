@@ -3,10 +3,11 @@ import userImg from "../assets/user.png";
 import { IoMdLogIn } from "react-icons/io";
 import { useState } from "react";
 import { Link } from "react-router";
+import useAuth from "@/Hooks/useAuth";
 
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const {user,signOutUser} = useAuth();
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -16,14 +17,16 @@ export default function Navbar() {
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
-
+   const handleSignOut = ()=>{
+    signOutUser();
+   }
   return (
     <div className="w-full sticky top-0 z-50 backdrop-blur-2xl shadow-lg py-3">
       <div className="mainContainer">
         <div className="navbar flex items-center justify-between">
           {/* Brand Section */}
           <div>
-            <h3 className="text-3xl font-bold text-white">
+            <h3 className="text-3xl font-bold text-white" style={{textShadow: '8px 5px 2px rgba(97,67,133,0.6)' }}>
               <span className="color-text">Spark</span>Vault
             </h3>
           </div>
@@ -44,11 +47,18 @@ export default function Navbar() {
           <div className="flex items-center">
             {/* Login Button */}
             <div className="mr-5">
-              <Link to="/logIn">
+              {
+                user ? <Link to="/" onClick={handleSignOut}>
+                <button className="btn-Style btn-grad btn-grad:hover flex items-center gap-2">
+                  Log Out <IoMdLogIn className="text-white text-2xl" />
+                </button>
+              </Link> : <Link to="/logIn">
                 <button className="btn-Style btn-grad btn-grad:hover flex items-center gap-2">
                   Login <IoMdLogIn className="text-white text-2xl" />
                 </button>
               </Link>
+              }
+              
             </div>
 
             {/* User Avatar with Dropdown */}
@@ -58,7 +68,10 @@ export default function Navbar() {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-12 rounded-full">
-                  <img src={userImg} alt="User Avatar" />
+                  {
+                    user ? <img src={user?.photoURL} alt="User Avatar" className="w-12 h-12 rounded-full object-cover" data-tooltip-id="profile-tooltip"/> :   <img src={userImg} alt="User Avatar" />
+                  }
+                
                 </div>
               </button>
 
