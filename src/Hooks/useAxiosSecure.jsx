@@ -8,7 +8,7 @@ import useAuth from "./useAuth";
 const axiosSecure = axios.create({
   baseURL:`${import.meta.env.VITE_API}`
 })
-export default function useAxios() {
+export default function useAxiosSecure() {
   const navigate = useNavigate();
   const {signOutUser} = useAuth()
   axiosSecure.interceptors.request.use(function (config) {

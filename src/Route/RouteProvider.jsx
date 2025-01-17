@@ -4,6 +4,7 @@ import HomePage from "../Pages/HomePage";
 import LogInPage from "../Pages/LogInPage";
 import SignUpPage from "@/Pages/SignUpPage";
 import AllProductsPage from "@/Pages/AllProductsPage";
+import ProductsDetailsPage from "@/Pages/ProductsDetailsPage";
 
 
 
@@ -16,6 +17,7 @@ export default function RouteProvider() {
             <Route path="/logIn" element={<LogInPage></LogInPage>}></Route>
             <Route path="/signUp" element={<SignUpPage></SignUpPage>}></Route>
             <Route path="/allProducts" element={<AllProductsPage></AllProductsPage>}></Route>
+            <Route path="/product/:id" element={<ProductsDetailsPage></ProductsDetailsPage>}></Route>
         </Route>
      </Routes>
   </>

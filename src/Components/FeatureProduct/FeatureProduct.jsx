@@ -1,16 +1,17 @@
-import UseAxiosPublic from "@/Hooks/axiosPublic"
+
 import { useQuery } from "@tanstack/react-query"
 import FeatureCard from "./FeatureCard";
 import BgImage from "@/ShareComponents/BgImage";
 import bgImg from '../../assets/home6-trending-jobs-bg.png'
+import useAxiosPublic from "@/Hooks/useAxiosPublic";
 
 export default function FeatureProduct() {
-  const axiosPublic = UseAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const {data : products = []} = useQuery({
     queryKey : ['products-by-time'],
     queryFn : async ()=>{
       const {data} = await axiosPublic.get('/product?sortBy=timestamp')
-      return data
+      return data.result
     }
   })
   return (

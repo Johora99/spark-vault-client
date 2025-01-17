@@ -1,4 +1,4 @@
-import UseAxiosPublic from "@/Hooks/axiosPublic";
+import UseAxiosPublic from "@/Hooks/useAxiosPublic";
 
 
 export const imageData = async (image)=>{

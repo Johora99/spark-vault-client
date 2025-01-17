@@ -1,16 +1,17 @@
-import UseAxiosPublic from "@/Hooks/axiosPublic";
+
 import { useQuery } from "@tanstack/react-query";
 import TrendingProductsCard from "./TrendingProductsCard";
 import { Link } from "react-router";
+import useAxiosPublic from "@/Hooks/useAxiosPublic";
 
 
 export default function TrendingProduct() {
-    const axiosPublic = UseAxiosPublic();
+    const axiosPublic = useAxiosPublic();
   const {data : products = []} = useQuery({
     queryKey : ['products-by-votes'],
     queryFn : async ()=>{
       const {data} = await axiosPublic.get('/product?sortBy=votes')
-      return data
+      return data.result
     }
   })
   return (

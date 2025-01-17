@@ -1,8 +1,9 @@
+import { Link } from "react-router";
 import { Meteors } from "../ui/Meteor";
 
 
 export default function TrendingProductsCard({ product }) {
-  const { name, image, description, tags, votes, productAddedBy } = product;
+  const {_id, name, image, description, tags, votes, productAddedBy } = product;
 
   return (
   
@@ -45,7 +46,7 @@ export default function TrendingProductsCard({ product }) {
         </div>
 
         {/* Actions Section */}
-        <div className="flex items-center justify-center mt-6">
+        <div className="flex items-center justify-center gap-3 mt-6">
           {/* Like Button */}
           <button className="flex items-center  text-white px-4 py-2 rounded-full text-sm shadow-md btn-grad transition">
             <svg
@@ -58,6 +59,9 @@ export default function TrendingProductsCard({ product }) {
             </svg>
             Like ({votes || 0})
           </button>
+          <Link to={`/product/${_id}`}>
+          <button className="btn-grad py-2 px-5 text-sm">Details</button>
+          </Link>
     <Meteors number={30} className="custom-meteor-class" />
         </div>
       </div>

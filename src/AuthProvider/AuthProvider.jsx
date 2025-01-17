@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
 import AuthContext from "../Context/AuthContext";
 import auth from "../Firebase/firebase.init";
-import UseAxiosPublic from "../Hooks/axiosPublic";
+import UseAxiosPublic from "../Hooks/useAxiosPublic";
 
 export default function AuthProvider({children}) {
   const axiosPublic = UseAxiosPublic();

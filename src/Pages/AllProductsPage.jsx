@@ -1,16 +1,17 @@
 import TrendingProductsCard from "@/Components/TrendingProduct/TrendingProductsCard";
-import UseAxiosPublic from "@/Hooks/axiosPublic";
+import useAxiosPublic from "@/Hooks/useAxiosPublic";
+
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 export default function AllProductsPage() {
-  const axiosPublic = UseAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const itemsPerPage = 6; // Number of items per page
 
   const { data = { products: [], totalProducts: 0 }, isLoading } = useQuery({
-    queryKey: ["all-products", searchTerm, currentPage],
+    queryKey: ["all-products", searchTerm, currentPage,itemsPerPage],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
         `/product?search=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`
@@ -18,7 +19,7 @@ export default function AllProductsPage() {
       return data; // Ensure this matches your backend response structure
     },
   });
-
+  
   const totalPages = Math.ceil(data.totalProducts / itemsPerPage); // Total pages
 
   const handlePageChange = (page) => {
@@ -41,8 +42,8 @@ export default function AllProductsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {isLoading ? (
           <p>Loading...</p>
-        ) : data.products.length > 0 ? (
-          data.products.map((product) => (
+        ) : data.result.length > 0 ? (
+          data.result.map((product) => (
             <TrendingProductsCard key={product._id} product={product} />
           ))
         ) : (

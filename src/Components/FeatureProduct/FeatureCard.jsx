@@ -2,13 +2,14 @@ import { FaThumbsUp } from "react-icons/fa";
 import truncateText from "@/api/utilities/textShort";
 import { BorderBeam } from "../ui/border-beam";
 import { Meteors } from "../ui/Meteor";
+import { Link } from "react-router";
 
 export default function FeatureCard({ product }) {
-  const { name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
+  const {_id, name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
 
   return (
     <div
-      className="relative block overflow-hidden rounded-lg border border-appleGreen bg-gradient-to-r from-gray-800 to-gray-900 p-6 shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl glassy-bg"
+      className="card-bg glassy-bg"
     >
       <div className="sm:flex sm:justify-between sm:items-center sm:gap-4">
         <div>
@@ -45,6 +46,9 @@ export default function FeatureCard({ product }) {
             <FaThumbsUp className="text-purple-300" />
             {votes}
           </button>
+          <Link to={`/product/${_id}`}>
+          <button className="flex items-center gap-1 rounded-lg bg-gray-800 px-3 py-2 text-sm text-white hover:bg-purple-500 hover:text-white transition">Details</button>
+          </Link>
         </div>
 
         {/* Timestamp */}
