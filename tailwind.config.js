@@ -10,6 +10,7 @@ export default {
   		colors: {
   			appleGreen: 'rgb(97, 67, 133)'
   		},
+		
   		plugins: [
   			'require(',
   			'daisyui',

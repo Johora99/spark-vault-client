@@ -13,7 +13,6 @@ export default function FeatureProduct() {
       return data
     }
   })
-  console.log(products)
   return (
     <BgImage bgImg={bgImg}>
       <div className="w-full">
@@ -27,7 +26,7 @@ export default function FeatureProduct() {
     From tech marvels to innovative tools, explore what the future has to offer.
   </p>
   <div className="mt-8 flex justify-center">
-    <span className="block w-24 h-1 bg-gradient-to-r from-purple-400 via-blue-400 to-green-400 rounded-full"></span>
+    <span className="block w-24 h-1 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 rounded-full"></span>
   </div>
 </div>
 
