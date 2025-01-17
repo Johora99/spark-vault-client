@@ -1,8 +1,7 @@
 import UseAxiosPublic from "@/Hooks/axiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import TrendingProductsCard from "./TrendingProductsCard";
-import DotPattern from "../ui/dot-pattern";
-import { cn } from "@/utils/cn";
+import { Link } from "react-router";
 
 
 export default function TrendingProduct() {
@@ -37,7 +36,9 @@ export default function TrendingProduct() {
              products.length > 0 ? products?.map(product =><TrendingProductsCard key={product._id} product={product}></TrendingProductsCard>) : <p>No Products Found</p>
            }
          </div>
-      
+        <div>
+          <Link>Show All Products</Link>
+        </div>
     </div>
   )
 }

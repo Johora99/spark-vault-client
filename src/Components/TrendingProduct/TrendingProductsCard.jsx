@@ -15,7 +15,7 @@ export default function TrendingProductsCard({ product }) {
         {/* Product Image */}
         <div className="w-20 h-20 mx-auto rounded-full overflow-hidden bg-gray-700 shadow-md border-2 border-purple-500">
           <img
-            src={image || "https://i.ibb.co/HN6zmjf/ff3e2acf-884a-4f4c-a383-6edfe3de0d88.jpg"}
+            src={image}
             alt={name}
             className="w-full h-full object-cover"
           />

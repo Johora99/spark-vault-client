@@ -21,7 +21,7 @@
     color: #fff;
     text-decoration: none;
         }
-        .shadow-custom {
+.shadow-custom {
   box-shadow: 0 4px 30px rgba(97,67,133,0.6), 
               0 8px 30px rgba(120, 75, 160, 0.2), 
               0 12px 45px rgba(43, 134, 197, 0.15);
@@ -68,6 +68,10 @@ background-image: linear-gradient(to right, #614385 0%, rgb(81, 99, 149)  51%, #
 }
 
 
+/* Clip Path Custom */
+.clip-path-triangle {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
 
 
 
