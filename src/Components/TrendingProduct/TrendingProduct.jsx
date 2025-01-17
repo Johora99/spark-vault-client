@@ -36,8 +36,8 @@ export default function TrendingProduct() {
              products.length > 0 ? products?.map(product =><TrendingProductsCard key={product._id} product={product}></TrendingProductsCard>) : <p>No Products Found</p>
            }
          </div>
-        <div>
-          <Link to='/allProducts'>Show All Products</Link>
+        <div className="text-center mb-20">
+          <Link to='/allProducts' className="btn-grad px-10 py-3 text-lg">See All Products</Link>
         </div>
     </div>
   )
