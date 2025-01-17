@@ -73,6 +73,22 @@ background-image: linear-gradient(to right, #614385 0%, rgb(81, 99, 149)  51%, #
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
+/* Keyframes for Rainfall Effect */
+@keyframes rainFall {
+  0% {
+    transform: translateY(-100px); /* Start above the viewport */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: translateY(100vh); /* End below the viewport */
+    opacity: 0; /* Fade out */
+  }
+}
+
+/* Rainfall Animation */
+.animate-rain-effect {
+  animation: rainFall linear infinite;
+}
 
 
          

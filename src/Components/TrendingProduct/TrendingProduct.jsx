@@ -37,7 +37,7 @@ export default function TrendingProduct() {
            }
          </div>
         <div>
-          <Link>Show All Products</Link>
+          <Link to='/allProducts'>Show All Products</Link>
         </div>
     </div>
   )

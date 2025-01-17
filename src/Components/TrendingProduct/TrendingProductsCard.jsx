@@ -58,9 +58,9 @@ export default function TrendingProductsCard({ product }) {
             </svg>
             Like ({votes || 0})
           </button>
+    <Meteors number={30} className="custom-meteor-class" />
         </div>
       </div>
-      <Meteors/>
     </div>
   );
 }

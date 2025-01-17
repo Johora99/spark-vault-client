@@ -1,10 +1,11 @@
 
 import Slider from "../Slider/Slider";
+import { Meteors } from "../ui/Meteor";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 
 export default function Hero() {
   return (
-    <div className="relative">
+    <div className="w-full">
       <div className="mainContainer relative z-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20">
           {/* Text Section */}
@@ -28,8 +29,9 @@ export default function Hero() {
             <Slider></Slider>
           </div>
         </div>
-      
+           
       </div>
+      <Meteors number={40} className="custom-meteor-class" />
     </div>
   );
 }

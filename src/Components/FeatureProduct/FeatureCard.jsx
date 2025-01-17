@@ -1,6 +1,7 @@
 import { FaThumbsUp } from "react-icons/fa";
 import truncateText from "@/api/utilities/textShort";
 import { BorderBeam } from "../ui/border-beam";
+import { Meteors } from "../ui/Meteor";
 
 export default function FeatureCard({ product }) {
   const { name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
@@ -58,6 +59,7 @@ export default function FeatureCard({ product }) {
         </div>
       </div>
       <BorderBeam colorFrom="rgb(97, 67, 133)" colorTo="rgb(81, 99, 149)"/>
+        <Meteors number={30} className="custom-meteor-class" />
     </div>
   );
 }

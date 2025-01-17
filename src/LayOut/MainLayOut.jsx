@@ -3,7 +3,6 @@ import Navbar from "../ShareComponents/Navbar";
 import Footer from "../ShareComponents/Footer";
 import DotPattern from "@/Components/ui/dot-pattern";
 import { cn } from "@/utils/cn";
-import { BackgroundBeams } from "@/Components/ui/BackgroundBeams";
 
 
 export default function MainLayOut() {
@@ -24,7 +23,7 @@ export default function MainLayOut() {
           "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
         )}
       />
-      
+    
     </div>
   
   )
