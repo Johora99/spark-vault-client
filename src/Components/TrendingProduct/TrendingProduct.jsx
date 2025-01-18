@@ -7,7 +7,7 @@ import useAxiosPublic from "@/Hooks/useAxiosPublic";
 
 export default function TrendingProduct() {
     const axiosPublic = useAxiosPublic();
-  const {data : products = []} = useQuery({
+  const {data : products = [],refetch} = useQuery({
     queryKey : ['products-by-votes'],
     queryFn : async ()=>{
       const {data} = await axiosPublic.get('/product?sortBy=votes')
@@ -34,7 +34,7 @@ export default function TrendingProduct() {
 
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-20">
            {
-             products.length > 0 ? products?.map(product =><TrendingProductsCard key={product._id} product={product}></TrendingProductsCard>) : <p>No Products Found</p>
+             products.length > 0 ? products?.map(product =><TrendingProductsCard key={product._id} product={product} refetch={refetch}></TrendingProductsCard>) : <p>No Products Found</p>
            }
          </div>
         <div className="text-center mb-20">

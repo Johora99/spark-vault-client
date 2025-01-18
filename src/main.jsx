@@ -9,6 +9,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import AuthProvider from "./AuthProvider/AuthProvider";
+import { LikeProvider } from "./Context/LikeContext";
 const queryClient = new QueryClient()
 
 
@@ -16,9 +17,13 @@ const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
+  
       <BrowserRouter>
-      <RouteProvider></RouteProvider>
+      <LikeProvider>
+        <RouteProvider></RouteProvider>
+      </LikeProvider>
     </BrowserRouter>
+
     </AuthProvider>
   </QueryClientProvider>
 );

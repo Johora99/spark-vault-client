@@ -3,20 +3,39 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { motion } from "motion/react";
 import ReviewForm from "@/Components/Review/ReviewForm";
+import { useEffect, useState } from "react";
+import useAuth from "@/Hooks/useAuth";
+import { useLike } from "@/Context/LikeContext";
+import { Meteors } from "@/Components/ui/Meteor";
+
 
 export default function ProductsDetailsPage() {
+ const {user} = useAuth();
+ const {checkIsLiked,handleVote,isLiked} = useLike()
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
-  const { data: product = {} } = useQuery({
+  const { data: product = {},refetch } = useQuery({
     queryKey: ["product-details", id],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/product/${id}`);
+      const { data } = await axiosSecure.get(`/product/byId/${id}`);
       return data;
     },
   });
+  
+  const {_id,name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
 
-  const { name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
 
+   useEffect(()=>{
+    checkIsLiked(id);
+   },[id])
+
+
+const vote = async (id) => {
+await  handleVote(id);
+ await refetch()
+
+
+};
   return (
     <div className="w-full  text-white">
       <div className="mainContainer py-20">
@@ -89,9 +108,9 @@ export default function ProductsDetailsPage() {
               Visit Site
             </a>
             <div className="flex gap-3">
-            <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-purple-500 transition shadow-lg flex items-center">
+            <button onClick={()=>vote(_id)} className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-purple-500 transition shadow-lg flex items-center">
             <svg
-              className="w-5 h-5 mr-2"
+              className={`w-5 h-5 mr-2`} 
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
@@ -113,6 +132,7 @@ export default function ProductsDetailsPage() {
           <div>
             <ReviewForm></ReviewForm>
           </div>
+          <Meteors number={30} className="custom-meteor-class" />
         </div>
       </div>
     </div>

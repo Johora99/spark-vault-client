@@ -3,10 +3,22 @@ import truncateText from "@/api/utilities/textShort";
 import { BorderBeam } from "../ui/border-beam";
 import { Meteors } from "../ui/Meteor";
 import { Link } from "react-router";
+import { useLike } from "@/Context/LikeContext";
+import { useEffect } from "react";
 
-export default function FeatureCard({ product }) {
+export default function FeatureCard({ product,refetch }) {
+   const {checkIsLiked,handleVote,isLiked} = useLike()
   const {_id, name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
 
+   useEffect(()=>{
+    checkIsLiked(_id);
+   },[_id])
+
+
+const vote = async (id) => {
+ await handleVote(id);
+  await refetch()
+ }
   return (
     <div
       className="card-bg glassy-bg"
@@ -40,7 +52,7 @@ export default function FeatureCard({ product }) {
       </div>
       <div className="mt-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <button
+          <button onClick={()=>vote(_id)}
             className="flex items-center gap-1 rounded-lg bg-gray-800 px-3 py-2 text-sm text-white hover:bg-purple-500 hover:text-white transition"
           >
             <FaThumbsUp className="text-purple-300" />

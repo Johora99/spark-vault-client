@@ -7,7 +7,7 @@ import useAxiosPublic from "@/Hooks/useAxiosPublic";
 
 export default function FeatureProduct() {
   const axiosPublic = useAxiosPublic();
-  const {data : products = []} = useQuery({
+  const {data : products = [],refetch} = useQuery({
     queryKey : ['products-by-time'],
     queryFn : async ()=>{
       const {data} = await axiosPublic.get('/product?sortBy=timestamp')
@@ -35,7 +35,7 @@ export default function FeatureProduct() {
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-20">
       {
-        products.length > 0 ? products?.map(product =><FeatureCard key={product._id} product={product}></FeatureCard>) : <p>No Products Found</p>
+        products.length > 0 ? products?.map(product =><FeatureCard key={product._id} product={product} refetch={refetch}></FeatureCard>) : <p>No Products Found</p>
       }
     </div>
     </div>
