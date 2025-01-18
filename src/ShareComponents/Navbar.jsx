@@ -38,7 +38,7 @@ export default function Navbar() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/products">Products</Link>
+                <Link to="/allProducts">Products</Link>
               </li>
             </ul>
           </div>
@@ -48,11 +48,7 @@ export default function Navbar() {
             {/* Login Button */}
             <div className="mr-5">
               {
-                user ? <Link to="/" onClick={handleSignOut}>
-                <button className="btn-Style btn-grad btn-grad:hover flex items-center gap-2">
-                  Log Out <IoMdLogIn className="text-white text-2xl" />
-                </button>
-              </Link> : <Link to="/logIn">
+                user ? '' : <Link to="/logIn">
                 <button className="btn-Style btn-grad btn-grad:hover flex items-center gap-2">
                   Login <IoMdLogIn className="text-white text-2xl" />
                 </button>
@@ -69,26 +65,29 @@ export default function Navbar() {
               >
                 <div className="w-12 rounded-full">
                   {
-                    user ? <img src={user?.photoURL} alt="User Avatar" className="w-12 h-12 rounded-full object-cover" data-tooltip-id="profile-tooltip"/> :   <img src={userImg} alt="User Avatar" />
+                    user ? <img src={user?.photoURL} alt="User Avatar" className="w-12 h-12 rounded-full object-cover" referrerPolicy="no-referrer"/> :   <img src={userImg} alt="User Avatar" />
                   }
                 
                 </div>
               </button>
 
               {isDropdownOpen && (
+                user && 
                 <ul
                   className="absolute right-0 mt-3 w-52 bg-appleGreen text-white  rounded-lg z-[1] shadow p-3"
                   role="menu"
                   onClick={closeDropdown} // Optional: Close when clicked inside
                 >
                   <li>
-                    <a className="justify-between">Profile</a>
+                    <Link className="justify-between">{user?.displayName}</Link>
                   </li>
                   <li>
-                    <a>Settings</a>
+                    <Link to='/dashBoard'>
+                      Dashboard
+                    </Link>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <Link onClick={handleSignOut}>Logout</Link>
                   </li>
                 </ul>
               )}

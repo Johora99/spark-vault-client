@@ -57,7 +57,8 @@ export default function ShowReview({_id}) {
         }}
       >
         <Slider {...settings} className="h-full">
-          {reviews?.map((review, index) => (
+          {
+            reviews.length > 0 ? reviews?.map((review, index) => (
             <div key={index} className="flex justify-center items-center h-full">
               <div className="text-center">
                 <img
@@ -87,7 +88,12 @@ export default function ShowReview({_id}) {
                   </div>
               </div>
             </div>
-          ))}
+          )):<div><p className="text-center text-xl text-white glassy-bg p-6 rounded-xl shadow-xl mt-8  mainContainer">
+  No reviews available. Be the first to share your thoughts!
+</p>
+</div>
+          }
+          
         </Slider>
       </div>
     </div>

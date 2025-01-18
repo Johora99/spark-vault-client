@@ -7,24 +7,38 @@ import { Link, useNavigate } from "react-router"
 import useAuth from "../Hooks/useAuth"
 import { imageData } from "@/api/utilities/imagebb"
 import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
+import useAxiosPublic from "@/Hooks/useAxiosPublic"
 
 export default function SignUpPage() {
   const {register,handleSubmit,watch,formState: { errors },reset} = useForm();
-  const {creatUser,googleSignIn,userUpdateProfile} = useAuth();
+  const {creatUser,userUpdateProfile} = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
      const onSubmit = async (data) =>{  
       const name = data.name;
         const image = data.file[0]
         const photoURL = await imageData(image);
         creatUser(data.email,data.password)
+      .then(async(res)=>{
+        const userInfo = {
+              name : data.name,
+              email : data.email,
+              image : photoURL,
+              role : 'user',
+              Status: 'unverified',
+                }
+      await userUpdateProfile(name,photoURL)
+      await axiosPublic.post('/user',userInfo)
       .then(res=>{
-       userUpdateProfile(name,photoURL)
-        navigate('/')
+        console.log(res.data)
+        navigate('/');
+        reset();
+      })
         
       }).catch(err=>{
         console.log(err)
       })
-      console.log(data.name)
+    
     
     }
   return (

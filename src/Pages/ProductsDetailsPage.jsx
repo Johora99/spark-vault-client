@@ -136,9 +136,9 @@ await  handleVote(id);
           <Meteors number={30} className="custom-meteor-class" />
         </div>
         <div>
-          <ShowReview _id={_id}></ShowReview>
         </div>
       </div>
+          <ShowReview _id={_id}></ShowReview>
     </div>
   );
 }

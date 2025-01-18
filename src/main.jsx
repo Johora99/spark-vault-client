@@ -18,7 +18,6 @@ const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-  
       <BrowserRouter>
       <LikeProvider>
         <RouteProvider></RouteProvider>
