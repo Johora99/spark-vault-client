@@ -10,6 +10,7 @@ import {
 } from '@tanstack/react-query'
 import AuthProvider from "./AuthProvider/AuthProvider";
 import { LikeProvider } from "./Context/LikeContext";
+import { ToastContainer, toast } from 'react-toastify';
 const queryClient = new QueryClient()
 
 
@@ -23,7 +24,7 @@ ReactDOM.createRoot(root).render(
         <RouteProvider></RouteProvider>
       </LikeProvider>
     </BrowserRouter>
-
+    <ToastContainer />
     </AuthProvider>
   </QueryClientProvider>
 );

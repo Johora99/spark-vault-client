@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import useAuth from "@/Hooks/useAuth";
 import { useLike } from "@/Context/LikeContext";
 import { Meteors } from "@/Components/ui/Meteor";
+import ShowReview from "@/Components/Review/ShowReview";
 
 
 export default function ProductsDetailsPage() {
@@ -130,9 +131,12 @@ await  handleVote(id);
           <div className="w-full border-b-[1px] border-b-appleGreen my-10"></div>
           {/* review from */}
           <div>
-            <ReviewForm></ReviewForm>
+            <ReviewForm _id={_id}></ReviewForm>
           </div>
           <Meteors number={30} className="custom-meteor-class" />
+        </div>
+        <div>
+          <ShowReview _id={_id}></ShowReview>
         </div>
       </div>
     </div>
