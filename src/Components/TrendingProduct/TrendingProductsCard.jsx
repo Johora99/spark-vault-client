@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 
 export default function TrendingProductsCard({ product,refetch }) {
-  const {_id, name, image, description, tags, votes, productAddedBy } = product;
+  const {_id, product_name, product_image, description, tags, web_link, votes, timestamp, owner_name, reportCount } = product;
   const {checkIsLiked,handleVote,isLiked} = useLike();
      useEffect(()=>{
       checkIsLiked(_id);
@@ -27,17 +27,17 @@ export default function TrendingProductsCard({ product,refetch }) {
         {/* Product Image */}
         <div className="w-20 h-20 mx-auto rounded-full overflow-hidden bg-gray-700 shadow-md border-2 border-purple-500">
           <img
-            src={image}
-            alt={name}
+            src={product_image}
+            alt={product_name}
             className="w-full h-full object-cover"
           />
         </div>
 
         {/* Product Name */}
-        <h3 className="text-xl font-bold text-white text-center">{name}</h3>
+        <h3 className="text-xl font-bold text-white text-center">{product_name}</h3>
 
         {/* Product Added By */}
-        <p className="text-sm text-gray-400 text-center">Added by {productAddedBy}</p>
+        <p className="text-sm text-gray-400 text-center">Added by {owner_name}</p>
 
         {/* Product Description */}
         <p className="text-sm text-gray-300 text-center line-clamp-3">

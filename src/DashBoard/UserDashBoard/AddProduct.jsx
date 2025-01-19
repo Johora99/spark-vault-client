@@ -35,11 +35,18 @@ const handleDelete = (index) => {
     setError("tags", { type: "manual", message: "At least one tag is required" });
   }
 };
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
      console.log({
     ...data,
     tags: tags.map((tag) => tag.text), // Include tags in the submission
   });
+  const productInfo = {
+    ...data,
+    tags: tags.map((tag) => tag.text),  
+    timestamp:new Date(),
+  }
+  const res = await axiosSecure.post('/product',productInfo)
+  console.log(res.data)
   }
 
   return (

@@ -10,7 +10,7 @@ export default function TrendingProduct() {
   const {data : products = [],refetch} = useQuery({
     queryKey : ['products-by-votes'],
     queryFn : async ()=>{
-      const {data} = await axiosPublic.get('/product?sortBy=votes')
+      const {data} = await axiosPublic.get('/product/approved?sortBy=votes')
       return data.result
     }
   })

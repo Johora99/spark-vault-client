@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export default function FeatureCard({ product,refetch }) {
    const {checkIsLiked,handleVote,isLiked} = useLike()
-  const {_id, name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
+  const {_id, product_name, product_image, description, tags, web_link, votes, timestamp, owner_name, reportCount } = product;
 
    useEffect(()=>{
     checkIsLiked(_id);
@@ -25,14 +25,14 @@ const vote = async (id) => {
     >
       <div className="sm:flex sm:justify-between sm:items-center sm:gap-4">
         <div>
-          <h3 className="text-2xl font-semibold text-white">{name}</h3>
-          <p className="mt-1 text-sm font-medium text-gray-300">By {productAddedBy}</p>
+          <h3 className="text-2xl font-semibold text-white">{product_name}</h3>
+          <p className="mt-1 text-sm font-medium text-gray-300">By {owner_name}</p>
         </div>
 
         <div className="hidden sm:block sm:shrink-0">
           <img
-            alt={name}
-            src={image}
+            alt={product_name}
+            src={product_image}
             className="h-16 w-16 rounded-full border-2 border-purple-500 object-cover shadow-sm"
           />
         </div>

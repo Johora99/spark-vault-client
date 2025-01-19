@@ -14,7 +14,7 @@ export default function AllProductsPage() {
     queryKey: ["all-products", searchTerm, currentPage,itemsPerPage],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/product?search=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`
+        `/product/approved?search=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`
       );
       return data; // Ensure this matches your backend response structure
     },
