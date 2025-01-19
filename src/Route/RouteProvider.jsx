@@ -9,6 +9,8 @@ import UserPrivatePage from "@/PrivatePage/UserPrivatePage";
 import DashBoard from "@/LayOut/DashBoard";
 import UserProfile from "@/DashBoard/UserDashBoard/UserProfile";
 import AddProduct from "@/DashBoard/UserDashBoard/AddProduct";
+import MyAddedProducts from "@/DashBoard/UserDashBoard/MyAddedProducts";
+import UpdatePage from "@/DashBoard/UserDashBoard/UpdatePage";
 
 
 
@@ -25,7 +27,9 @@ export default function RouteProvider() {
         </Route>
         <Route path="/dashBoard" element={<UserPrivatePage><DashBoard></DashBoard></UserPrivatePage>}>
           <Route index element={<UserPrivatePage><UserProfile></UserProfile></UserPrivatePage>}></Route>
-          <Route path="/dashBoard/addProduct" element={<AddProduct></AddProduct>}></Route>
+          <Route path="/dashBoard/addProduct" element={<UserPrivatePage><AddProduct></AddProduct></UserPrivatePage>}></Route>
+          <Route path="/dashBoard/myAddedProduct" element={<UserPrivatePage><MyAddedProducts></MyAddedProducts></UserPrivatePage>}></Route>
+          <Route path="/dashBoard/update/:id" element={<UserPrivatePage><UpdatePage></UpdatePage></UserPrivatePage>}></Route>
         </Route>
      </Routes>
   </>

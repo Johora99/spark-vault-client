@@ -3,12 +3,15 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { WithContext as ReactTags } from "react-tag-input";
+import { toast } from "react-toastify";
 
 
 
 export default function AddProduct() {
 const {register,handleSubmit,watch,formState: { errors },reset,setError,clearErrors} = useForm();
+const navigate = useNavigate();
     const { user } = useAuth(); 
     const axiosSecure = useAxiosSecure();
       const [tags, setTags] = useState([]);
@@ -44,9 +47,15 @@ const handleDelete = (index) => {
     ...data,
     tags: tags.map((tag) => tag.text),  
     timestamp:new Date(),
+    votes : 0,
+    reportCount: 0,
   }
   const res = await axiosSecure.post('/product',productInfo)
-  console.log(res.data)
+  if (res.data?.insertedId) {
+      toast.success('Product has been submitted and is under review!');
+      navigate('/dashBoard/myAddedProduct')
+      reset()
+    }
   }
 
   return (

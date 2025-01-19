@@ -26,7 +26,7 @@ export default function DashBoardSideBar() {
           </li>
           <li className="flex items-center gap-2">
             <AiFillProduct />
-            <NavLink>My Products</NavLink>
+            <NavLink to='/dashBoard/myAddedProduct'>My Products</NavLink>
           </li>
         </ul>
           </div>
