@@ -26,6 +26,7 @@
     "react-router": "^7.1.1",
     "react-slick": "^0.30.3",
     "react-slider": "^2.0.6",
+    "react-tag-input": "^6.10.3",
     "react-toastify": "^11.0.3",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.1",

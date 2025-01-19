@@ -68,7 +68,6 @@ const UserProfile = () => {
           </div>
         )}
 
-      
           <Meteors number={30} className="custom-meteor-class" />
       </div>
       

@@ -18,11 +18,11 @@ export default function DashBoardSideBar() {
              <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
           <li className="flex items-center gap-2">
             <IoHome />
-            <NavLink>My Profile</NavLink>
+            <NavLink to='/dashBoard'>My Profile</NavLink>
           </li>
           <li className="my-3 flex items-center gap-2">
             <FaUtensils className='text-xl'/>
-            <NavLink>Add Product</NavLink>
+            <NavLink to='/dashBoard/addProduct'>Add Product</NavLink>
           </li>
           <li className="flex items-center gap-2">
             <AiFillProduct />
