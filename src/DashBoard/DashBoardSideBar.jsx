@@ -15,20 +15,54 @@ export default function DashBoardSideBar() {
             </h3>
           </div>
           <div>
-             <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
-          <li className="flex items-center gap-2">
-            <IoHome />
-            <NavLink to='/dashBoard'>My Profile</NavLink>
-          </li>
-          <li className="my-3 flex items-center gap-2">
-            <FaUtensils className='text-xl'/>
-            <NavLink to='/dashBoard/addProduct'>Add Product</NavLink>
-          </li>
-          <li className="flex items-center gap-2">
-            <AiFillProduct />
-            <NavLink to='/dashBoard/myAddedProduct'>My Products</NavLink>
-          </li>
-        </ul>
+          {
+  userData?.role === 'user' ? (
+    <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
+      <li className="flex items-center gap-2">
+        <IoHome />
+        <NavLink to='/dashBoard/userProfile'>My Profile</NavLink>
+      </li>
+      <li className="my-3 flex items-center gap-2">
+        <FaUtensils className='text-xl'/>
+        <NavLink to='/dashBoard/addProduct'>Add Product</NavLink>
+      </li>
+      <li className="flex items-center gap-2">
+        <AiFillProduct />
+        <NavLink to='/dashBoard/myAddedProduct'>My Products</NavLink>
+      </li>
+    </ul>
+  ) : userData?.role === 'admin' ? (
+    <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
+      <li className="flex items-center gap-2">
+        <IoHome />
+        <NavLink to='/dashBoard'>Statistics Page</NavLink>
+      </li>
+      <li className="my-3 flex items-center gap-2">
+        <FaUtensils className='text-xl'/>
+        <NavLink to='/dashBoard/manageUser'>Manage Users</NavLink>
+      </li>
+      <li className="flex items-center gap-2">
+        <AiFillProduct />
+        <NavLink to=''>Manage Coupons</NavLink>
+      </li>
+    
+    </ul>
+  ) : userData?.role === 'moderator' ? (
+    <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
+      <li className="flex items-center gap-2">
+        <IoHome />
+        <NavLink to='/dashBoard'>Product Review Queue</NavLink>
+      </li>
+      <li className="my-3 flex items-center gap-2">
+        <FaUtensils className='text-xl'/>
+        <NavLink to='/dashBoard/addProduct'>Reported Contents</NavLink>
+      </li>
+
+    </ul>
+  ) : null
+}
+
+            
           </div>
       </div>
     </div>
