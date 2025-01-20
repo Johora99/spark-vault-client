@@ -10,7 +10,7 @@ export default function FeatureProduct() {
   const {data : products = [],refetch} = useQuery({
     queryKey : ['products-by-time'],
     queryFn : async ()=>{
-      const {data} = await axiosPublic.get('/product/approved?sortBy=timestamp')
+      const {data} = await axiosPublic.get('/product/Accepted?featured=true&sortBy=timestamp')
       return data.result
     }
   })

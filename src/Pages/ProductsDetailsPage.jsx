@@ -23,7 +23,7 @@ export default function ProductsDetailsPage() {
     },
   });
   
-  const {_id,name, image, description, tags, siteLink, votes, timestamp, productAddedBy, reportCount } = product;
+  const {_id, product_name, product_image, description, tags, web_link, votes, timestamp, owner_name, reportCount } = product;
 
 
    useEffect(()=>{
@@ -49,7 +49,7 @@ await  handleVote(id);
               transition={{ duration: 2, repeat: Infinity }}
               className="flex-shrink-0"
             >
-              <img src={image} alt={name} className="w-72 rounded-lg shadow-lg border-2 border-purple-500" />
+              <img src={product_image} alt={product_name} className="w-72 rounded-lg shadow-lg border-2 border-purple-500" />
             </motion.div>
 
             {/* Product Details */}
@@ -59,7 +59,7 @@ await  handleVote(id);
                 transition={{ duration: 2, repeat: Infinity }}
                 className="text-4xl font-semibold mb-5"
               >
-                {name}
+                {product_name}
               </motion.h2>
               <p className="text-gray-300 mb-5 text-lg">{description}</p>
 
@@ -78,7 +78,7 @@ await  handleVote(id);
               {/* Additional Info */}
               <div className="mt-5 space-y-3">
                 <p className="text-sm">
-                  <span className="font-semibold">Added By:</span> {productAddedBy || "Unknown"}
+                  <span className="font-semibold">Added By:</span> {owner_name || "Unknown"}
                 </p>
                 <p className="text-sm">
                   <span className="font-semibold">Votes:</span> {votes || 0}
@@ -101,7 +101,7 @@ await  handleVote(id);
           {/* Action Buttons */}
           <div className="mt-10 flex justify-between items-center">
             <a
-              href={siteLink}
+              href={web_link}
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-3 btn-grad"

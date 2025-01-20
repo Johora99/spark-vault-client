@@ -5,7 +5,6 @@ import { AiFillProduct } from "react-icons/ai";
 import useOneUser from "@/Hooks/useOneUser";
 export default function DashBoardSideBar() {
   const {userData} = useOneUser();
-  console.log(userData.role)
   return (
     <div>
       <div className="p-10">
@@ -51,7 +50,7 @@ export default function DashBoardSideBar() {
     <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
       <li className="flex items-center gap-2">
         <IoHome />
-        <NavLink to='/dashBoard'>Product Review Queue</NavLink>
+        <NavLink to='/dashBoard/manageProduct'>Product Review Queue</NavLink>
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>

@@ -1,10 +1,11 @@
 import useAxiosSecure from "@/Hooks/useAxiosSecure"
 import { useQuery } from "@tanstack/react-query"
 import { motion } from "motion/react";
+import { toast } from "react-toastify";
 
 export default function ManageUser() {
   const axiosSecure = useAxiosSecure();
-  const {data : user = []} = useQuery({
+  const {data : user = [],refetch} = useQuery({
     queryKey:['user'],
     queryFn:async ()=>{
       const {data} = await axiosSecure.get('/user')
@@ -13,7 +14,17 @@ export default function ManageUser() {
   })
   const handleModerator = async (email)=>{
     const {data} = await axiosSecure.patch(`/user/moderator/${email}`,{role:'moderator'})
-    console.log(data)
+    if(data?.modifiedCount > 0){
+      toast.success('Role Update Successfully');
+      refetch();
+    }
+  }
+  const handleAdmin = async (email)=>{
+    const {data} = await axiosSecure.patch(`/user/admin/${email}`,{role:'admin'})
+      if(data?.modifiedCount > 0){
+      toast.success('Role Update Successfully');
+      refetch();
+    }
   }
   return (
     <div className="px-4 lg:px-16 py-10">
@@ -69,7 +80,7 @@ export default function ManageUser() {
 
                       <button onClick={()=>handleModerator(person?.email)}
                         className="text-purple-500 hover:text-purple-700 transition-colors"
-                        title="Edit Product"
+                      
                       >
                     Make Moderator
 
@@ -77,9 +88,9 @@ export default function ManageUser() {
             
                     </td>
                     <td className="p-4 text-center">
-                      <button
+                      <button onClick={()=>handleAdmin(person?.email)}
                         className="text-blue-500 hover:text-blue-700 transition-colors"
-                        title="Delete Product"
+                      
                       >
                        Make Admin
                       </button>

@@ -67,9 +67,10 @@ export default function UpdatePage() {
     const  votes= product.votes || 0;
     const  reportCount= product.reportCount || 0;
     const  status= product.status || "pending";
+    const featured = product.featured || false;
   
      const productInfo = {
-      owner_name,owner_email,owner_image,product_name,product_image,web_link,description,tags:tags.map((tag) => tag.text) || [],timestamp,votes,reportCount,status
+      owner_name,owner_email,owner_image,product_name,product_image,web_link,description,tags:tags.map((tag) => tag.text) || [],timestamp,votes,reportCount,status,featured
      }
       const res = await axiosSecure.put(`/product/${id}`, productInfo);
       if(res.data?.modifiedCount > 0){

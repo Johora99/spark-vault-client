@@ -10,11 +10,11 @@ export default function AllProductsPage() {
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const itemsPerPage = 6; // Number of items per page
 
-  const { data = { products: [], totalProducts: 0 }, isLoading } = useQuery({
+  const { data = { products: [], totalProducts: 0 }, isLoading,refetch } = useQuery({
     queryKey: ["all-products", searchTerm, currentPage,itemsPerPage],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/product/approved?search=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`
+        `/product/Accepted?search=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`
       );
       return data; // Ensure this matches your backend response structure
     },
@@ -44,7 +44,7 @@ export default function AllProductsPage() {
           <p>Loading...</p>
         ) : data.result.length > 0 ? (
           data.result.map((product) => (
-            <TrendingProductsCard key={product._id} product={product} />
+            <TrendingProductsCard key={product._id} product={product} refetch={refetch}/>
           ))
         ) : (
           <p>No Data Available</p>

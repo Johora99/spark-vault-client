@@ -12,10 +12,15 @@ export default function TrendingProductsCard({ product,refetch }) {
      },[_id])
   
   
-  const vote = async (id) => {
-  await  handleVote(id);
-   await refetch()
+const vote = async (id) => {
+  await handleVote(id);
+  if (refetch) {
+    refetch();  // Make sure refetch is defined and is called here
+  } else {
+    console.log("refetch is not a function");
   }
+};
+
   return (
   
       <div className="relative block overflow-hidden rounded-lg border border-appleGreen bg-gradient-to-r from-gray-800 to-gray-900 p-6 shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl glassy-bg">

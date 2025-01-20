@@ -10,7 +10,7 @@ export default function TrendingProduct() {
   const {data : products = [],refetch} = useQuery({
     queryKey : ['products-by-votes'],
     queryFn : async ()=>{
-      const {data} = await axiosPublic.get('/product/approved?sortBy=votes')
+      const {data} = await axiosPublic.get('/product/Accepted?sortBy=votes')
       return data.result
     }
   })
@@ -33,9 +33,14 @@ export default function TrendingProduct() {
 </div>
 
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-20">
-           {
-             products.length > 0 ? products?.map(product =><TrendingProductsCard key={product._id} product={product} refetch={refetch}></TrendingProductsCard>) : <p>No Products Found</p>
-           }
+          {
+  products && products.length > 0
+    ? products.map(product => (
+        <TrendingProductsCard key={product._id} product={product} refetch={refetch} />
+      ))
+    : <p>No Products Found</p>
+}
+
          </div>
         <div className="text-center mb-20">
           <Link to='/allProducts' className="btn-grad px-10 py-3 text-lg">See All Products</Link>
