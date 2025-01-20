@@ -8,11 +8,14 @@ import useAuth from "@/Hooks/useAuth";
 import { useLike } from "@/Context/LikeContext";
 import { Meteors } from "@/Components/ui/Meteor";
 import ShowReview from "@/Components/Review/ShowReview";
+import { useReport } from "@/Context/ReportContext";
+import { toast } from "react-toastify";
 
 
 export default function ProductsDetailsPage() {
  const {user} = useAuth();
- const {checkIsLiked,handleVote,isLiked} = useLike()
+ const {checkIsLiked,handleVote,isLiked} = useLike();
+ const {handleReport,isReport} = useReport();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const { data: product = {},refetch } = useQuery({
@@ -33,10 +36,13 @@ export default function ProductsDetailsPage() {
 
 const vote = async (id) => {
 await  handleVote(id);
- await refetch()
-
-
+await refetch();
 };
+const report = async (id)=>{
+  await handleReport(id)
+  console.log(isReport)
+  refetch();
+}
   return (
     <div className="w-full  text-white">
       <div className="mainContainer py-20">
@@ -111,7 +117,7 @@ await  handleVote(id);
             <div className="flex gap-3">
             <button onClick={()=>vote(_id)} className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-purple-500 transition shadow-lg flex items-center">
             <svg
-              className={`w-5 h-5 mr-2`} 
+              className={`w-5 h-5 mr-2 ${isLiked ? 'text-red-500' : 'text-white'}`} 
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
@@ -120,12 +126,19 @@ await  handleVote(id);
             </svg>
             Like ({votes || 0})
           </button>
-            <button
-              className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-purple-500 transition shadow-lg"
-              onClick={() => alert("Report functionality coming soon!")}
-            >
-              Report Product
-            </button>
+
+          <button
+  className={`px-6 py-3 rounded-lg transition shadow-lg ${
+    isReport
+      ? "bg-gray-800 text-white hover:bg-purple-500" 
+      : "bg-red-600 text-white cursor-not-allowed" 
+  }`}
+  onClick={() => report(_id)} 
+>
+  {isReport ? "Report Product" : "Reported"}
+</button>
+
+
             </div>
           </div>
           <div className="w-full border-b-[1px] border-b-appleGreen my-10"></div>

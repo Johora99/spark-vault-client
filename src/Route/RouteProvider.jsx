@@ -13,6 +13,8 @@ import MyAddedProducts from "@/DashBoard/UserDashBoard/MyAddedProducts";
 import UpdatePage from "@/DashBoard/UserDashBoard/UpdatePage";
 import ManageUser from "@/DashBoard/AdminDashBoard/ManageUser";
 import ManageProduct from "@/DashBoard/ModeratorDashBoard/ManageProduct";
+import ReportedProduct from "@/DashBoard/ModeratorDashBoard/ReportedProduct";
+import ErrorPage from "@/Pages/ErrorPage";
 
 
 
@@ -20,6 +22,7 @@ import ManageProduct from "@/DashBoard/ModeratorDashBoard/ManageProduct";
 export default function RouteProvider() {
   return <>
      <Routes>
+        <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         <Route path="/" element={<MainLayOut></MainLayOut>}>
             <Route index element={<HomePage></HomePage>}></Route>
             <Route path="/logIn" element={<LogInPage></LogInPage>}></Route>
@@ -34,6 +37,7 @@ export default function RouteProvider() {
           <Route path="/dashBoard/update/:id" element={<UserPrivatePage><UpdatePage></UpdatePage></UserPrivatePage>}></Route>
           <Route path="/dashBoard/manageUser" element={<ManageUser></ManageUser>}></Route>
           <Route path="/dashBoard/manageProduct" element={<ManageProduct></ManageProduct>}></Route>
+          <Route path="/dashBoard/reportedProduct" element={<ReportedProduct></ReportedProduct>}></Route>
         </Route>
      </Routes>
   </>

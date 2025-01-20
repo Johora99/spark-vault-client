@@ -54,7 +54,7 @@ export default function DashBoardSideBar() {
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>
-        <NavLink to='/dashBoard/addProduct'>Reported Contents</NavLink>
+        <NavLink to='/dashBoard/reportedProduct'>Reported Contents</NavLink>
       </li>
 
     </ul>

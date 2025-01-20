@@ -11,6 +11,7 @@ import {
 import AuthProvider from "./AuthProvider/AuthProvider";
 import { LikeProvider } from "./Context/LikeContext";
 import { ToastContainer, toast } from 'react-toastify';
+import { ReportProvider } from "./Context/ReportContext";
 const queryClient = new QueryClient()
 
 
@@ -19,9 +20,11 @@ ReactDOM.createRoot(root).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <BrowserRouter>
-      <LikeProvider>
+    <ReportProvider>
+        <LikeProvider>
         <RouteProvider></RouteProvider>
       </LikeProvider>
+    </ReportProvider>
     </BrowserRouter>
     <ToastContainer />
     </AuthProvider>

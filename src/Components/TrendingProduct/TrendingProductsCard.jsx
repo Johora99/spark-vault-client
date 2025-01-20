@@ -66,7 +66,7 @@ const vote = async (id) => {
           {/* Like Button */}
           <button onClick={()=>vote(_id)} className="flex items-center  text-white px-4 py-2 rounded-full text-sm shadow-md btn-grad transition">
             <svg
-              className="w-5 h-5 mr-2"
+              className={`w-5 h-5 mr-2 `}
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
