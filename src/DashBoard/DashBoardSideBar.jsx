@@ -34,7 +34,7 @@ export default function DashBoardSideBar() {
     <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
       <li className="flex items-center gap-2">
         <IoHome />
-        <NavLink to='/dashBoard'>Statistics Page</NavLink>
+        <NavLink to='/dashBoard/statistic'>Statistics Page</NavLink>
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>

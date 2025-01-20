@@ -29,6 +29,7 @@
     "react-slider": "^2.0.6",
     "react-tag-input": "^6.10.3",
     "react-toastify": "^11.0.3",
+    "recharts": "^2.15.0",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.1",
     "tailwind-merge": "^2.6.0",
