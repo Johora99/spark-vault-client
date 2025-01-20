@@ -2,6 +2,7 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure"
 import { useQuery } from "@tanstack/react-query"
 import { motion } from "motion/react";
 import PiChart from "./PiChart";
+import { Meteors } from "@/Components/ui/Meteor";
 
 export default function StatisticPage() {
   const axiosSecure = useAxiosSecure();
@@ -99,6 +100,7 @@ export default function StatisticPage() {
     <h3 className="text-2xl font-bold color-text mb-2">Total Reviews</h3>
     <p className="text-4xl font-bold text-white">{statistic?.reviews}</p>
   </div>
+  <Meteors number={30} className="custom-meteor-class" />
       </div>
        <div>
         <PiChart statistic={statistic}></PiChart>

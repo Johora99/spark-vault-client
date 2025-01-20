@@ -42,7 +42,7 @@ export default function DashBoardSideBar() {
       </li>
       <li className="flex items-center gap-2">
         <AiFillProduct />
-        <NavLink to=''>Manage Coupons</NavLink>
+        <NavLink to='/dashBoard/manageCoupon'>Manage Coupons</NavLink>
       </li>
     
     </ul>

@@ -105,5 +105,23 @@ background-image: linear-gradient(to right, #614385 0%, #516395  51%, #614385  1
 
 
 }
+
+/* Add extra flair with smooth transitions */
+.card-container {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect to slightly enlarge the card */
+.card-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Button hover effect */
+.card-container button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
  
 

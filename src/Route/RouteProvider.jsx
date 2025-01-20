@@ -16,6 +16,7 @@ import ManageProduct from "@/DashBoard/ModeratorDashBoard/ManageProduct";
 import ReportedProduct from "@/DashBoard/ModeratorDashBoard/ReportedProduct";
 import ErrorPage from "@/Pages/ErrorPage";
 import StatisticPage from "@/DashBoard/AdminDashBoard/StatisticPage";
+import ManageCoupon from "@/DashBoard/AdminDashBoard/ManageCoupon";
 
 
 
@@ -40,6 +41,7 @@ export default function RouteProvider() {
           <Route path="/dashBoard/manageProduct" element={<ManageProduct></ManageProduct>}></Route>
           <Route path="/dashBoard/reportedProduct" element={<ReportedProduct></ReportedProduct>}></Route>
           <Route path="/dashBoard/statistic" element={<StatisticPage></StatisticPage>}></Route>
+          <Route path="/dashBoard/manageCoupon" element={<ManageCoupon></ManageCoupon>}></Route>
         </Route>
      </Routes>
   </>
