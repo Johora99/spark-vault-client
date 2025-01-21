@@ -59,7 +59,7 @@ const handleReview = async (e)=>{
         <div>
           <label className="block text-lg font-medium">Image</label>
           <input
-            type="text"
+            type="url"
             value={user?.photoURL}
             readOnly
             className="input-field"

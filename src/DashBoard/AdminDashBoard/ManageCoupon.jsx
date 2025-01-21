@@ -2,10 +2,15 @@ import { Meteors } from "@/Components/ui/Meteor";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
+import AddCouponForm from "./AddCouponForm";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import ModalBox from "./ModalBox";
 
 export default function ManageCoupon() {
   const axiosSecure = useAxiosSecure();
-  const { data: coupons = [] } = useQuery({
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: coupons = [],refetch } = useQuery({
     queryKey: ['coupon'],
     queryFn: async () => {
       const { data } = await axiosSecure.get('/coupon');
@@ -13,17 +18,35 @@ export default function ManageCoupon() {
     }
   });
 
-  const handleEdit = (id) => {
-    // Implement edit functionality
-    console.log(`Edit Coupon with ID: ${id}`);
-  };
+const openModal = (id) => {
+  const modal = document.getElementById(`${id}`);
+  if (modal) {
+    modal.showModal(); // Open the modal
+    setIsModalOpen(true);
+  }
+};
 
+   const closeModal = (id) => {
+  const modal = document.getElementById(`${id}`);
+  setIsModalOpen(false);
+  if (modal) {
+    modal.close();
+  }
+};
+const cancelApply = (id)=>{
+  const modal = document.getElementById(`${id}`);
+    if (modal) {
+    modal.close();
+  }
+ }
   const handleDelete = async (id) => {
     try {
-      // Implement delete functionality
-      await axiosSecure.delete(`/coupon/${id}`);
-      // You can refetch coupons or update local state after deletion
-      console.log(`Coupon with ID: ${id} deleted`);
+      const {data} = await axiosSecure.delete(`/coupon/${id}`)
+      if(data?.deletedCount > 0){
+        toast.success('Coupon is deleted successfully');
+        refetch();
+      }
+    
     } catch (error) {
       console.error("Error deleting coupon:", error);
     }
@@ -61,7 +84,7 @@ export default function ManageCoupon() {
 
                 {/* Discount Information */}
                 <p className="text-2xl font-bold text-white text-center mb-4">
-                  {coupon?.discountAmount}% Off
+                  ${coupon?.discountAmount}
                 </p>
 
                 {/* Expiry Date */}
@@ -75,7 +98,7 @@ export default function ManageCoupon() {
 
                   {/* Edit Button */}
                   <button
-                    onClick={() => handleEdit(coupon._id)}
+                    onClick={()=>openModal(coupon._id)}
                     className="px-4 py-2 text-white rounded-full font-semibold btn-grad transition duration-300 border-[1px] border-appleGreen"
                   >
                     Edit
@@ -91,9 +114,16 @@ export default function ManageCoupon() {
                 </div>
               </div>
               <Meteors number={30} className="custom-meteor-class" />
+      <div>
+        <ModalBox coupon={coupon} closeModal={closeModal} cancelApply={cancelApply} refetch={refetch}></ModalBox>
+      </div>
             </div>
           )) : <p className="text-gray-400">No Coupons Available</p>
         }
+      </div>
+      <div>
+        <AddCouponForm refetch={refetch}></AddCouponForm>
+
       </div>
     </div>
   );
