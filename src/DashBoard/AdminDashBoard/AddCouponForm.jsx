@@ -14,7 +14,7 @@ export default function AddCouponForm({refetch}) {
     const couponInfo = {
       couponCode,expiryDate,description,discountAmount
     }
-  
+   
    try {
     const { data } = await axiosSecure.post('/coupon', couponInfo);
     if (data.insertedId) {

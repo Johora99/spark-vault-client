@@ -17,6 +17,8 @@ import ReportedProduct from "@/DashBoard/ModeratorDashBoard/ReportedProduct";
 import ErrorPage from "@/Pages/ErrorPage";
 import StatisticPage from "@/DashBoard/AdminDashBoard/StatisticPage";
 import ManageCoupon from "@/DashBoard/AdminDashBoard/ManageCoupon";
+import AdminPrivatePage from "@/PrivatePage/AdminPrivatePage";
+import ModeratorPrivatePage from "@/PrivatePage/ModeratorPrivatePage";
 
 
 
@@ -37,11 +39,12 @@ export default function RouteProvider() {
           <Route path="/dashBoard/addProduct" element={<UserPrivatePage><AddProduct></AddProduct></UserPrivatePage>}></Route>
           <Route path="/dashBoard/myAddedProduct" element={<UserPrivatePage><MyAddedProducts></MyAddedProducts></UserPrivatePage>}></Route>
           <Route path="/dashBoard/update/:id" element={<UserPrivatePage><UpdatePage></UpdatePage></UserPrivatePage>}></Route>
-          <Route path="/dashBoard/manageUser" element={<ManageUser></ManageUser>}></Route>
-          <Route path="/dashBoard/manageProduct" element={<ManageProduct></ManageProduct>}></Route>
-          <Route path="/dashBoard/reportedProduct" element={<ReportedProduct></ReportedProduct>}></Route>
-          <Route path="/dashBoard/statistic" element={<StatisticPage></StatisticPage>}></Route>
-          <Route path="/dashBoard/manageCoupon" element={<ManageCoupon></ManageCoupon>}></Route>
+          
+          <Route path="/dashBoard/manageUser" element={<AdminPrivatePage><ManageUser></ManageUser></AdminPrivatePage>}></Route>
+          <Route path="/dashBoard/manageProduct" element={<ModeratorPrivatePage><ManageProduct></ManageProduct></ModeratorPrivatePage>}></Route>
+          <Route path="/dashBoard/reportedProduct" element={<ModeratorPrivatePage><ReportedProduct></ReportedProduct></ModeratorPrivatePage>}></Route>
+          <Route path="/dashBoard/statistic" element={<AdminPrivatePage><StatisticPage></StatisticPage></AdminPrivatePage>}></Route>
+          <Route path="/dashBoard/manageCoupon" element={<AdminPrivatePage><ManageCoupon></ManageCoupon></AdminPrivatePage>}></Route>
         </Route>
      </Routes>
   </>

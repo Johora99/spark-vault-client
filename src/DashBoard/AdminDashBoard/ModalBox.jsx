@@ -19,7 +19,7 @@ export default function ModalBox({closeModal,coupon,cancelApply,refetch}) {
         const couponInfo = {
           couponCode,expiryDate,description,discountAmount
         }
-      
+        
       
         const { data } = await axiosSecure.put(`/coupon/${_id}`, couponInfo);
         if(data?.modifiedCount > 0){

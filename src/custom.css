@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+html{
+  scroll-behavior : smooth;
+}
 .inter{
   font-family: "Inter", serif;
 }
@@ -123,5 +125,5 @@ background-image: linear-gradient(to right, #614385 0%, #516395  51%, #614385  1
   transition: transform 0.3s ease-in-out;
 }
 
- 
+
 

@@ -25,7 +25,7 @@ export default function SignUpPage() {
               email : data.email,
               image : photoURL,
               role : 'user',
-              Status: 'unverified',
+              status: 'unverified',
                 }
       await userUpdateProfile(name,photoURL)
       await axiosPublic.post('/user',userInfo)

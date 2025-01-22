@@ -39,10 +39,7 @@ const handleDelete = (index) => {
   }
 };
   const onSubmit = async (data) => {
-     console.log({
-    ...data,
-    tags: tags.map((tag) => tag.text), // Include tags in the submission
-  });
+
   const productInfo = {
     ...data,
     tags: tags.map((tag) => tag.text),  
@@ -50,12 +47,30 @@ const handleDelete = (index) => {
     votes : 0,
     reportCount: 0,
   }
-  const res = await axiosSecure.post('/product',productInfo)
+  try {
+  const res = await axiosSecure.post('/product', productInfo);
+  console.log(res.data);
+
   if (res.data?.insertedId) {
-      toast.success('Product has been submitted and is under review!');
-      navigate('/dashBoard/myAddedProduct')
-      reset()
-    }
+    toast.success('Product has been submitted and is under review!');
+    navigate('/dashBoard/myAddedProduct');
+    reset();
+  } else if (res.data?.message) {
+    toast.warning(res.data?.message);
+    navigate('/dashBoard/myAddedProduct');
+  } else {
+    toast.error('Unexpected server response.');
+  }
+} catch (error) {
+  if (error.response?.data?.message) {
+    // Display custom error message from server
+    toast.error(error.response.data.message);
+  } else {
+    // Generic error message
+    toast.error('Failed to submit the product. Please try again later.');
+  }
+}
+
   }
 
   return (
