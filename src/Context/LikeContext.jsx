@@ -2,6 +2,7 @@ import useAuth from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 
 
@@ -11,7 +12,6 @@ export const LikeProvider = ({ children}) => {
   const axiosSecure = useAxiosSecure();
   const {user} = useAuth();
   const [isLiked, setIsLiked] = useState();
-
   // Fetch user-specific likes
 
    const {data : likes = [],refetch} = useQuery({
@@ -42,7 +42,8 @@ export const LikeProvider = ({ children}) => {
       await axiosSecure.post(`/like`, likeData);
     refetch(); // Refetch to ensure data is in sync with the backend
     } catch (error) {
-      console.error("Error posting like:", error);
+      // console.error(error.response.data.message);
+      toast.error(error.response?.data?.message)
     }
   }
      return (
@@ -52,6 +53,7 @@ export const LikeProvider = ({ children}) => {
         isLiked,
         checkIsLiked,
         handleVote,
+    
       }}
     >
       {children}

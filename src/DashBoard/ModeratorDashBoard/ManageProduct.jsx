@@ -17,7 +17,6 @@ export default function ManageProduct() {
 const handleMakeFeatured = async (id) => {
   try {
     const { data } = await axiosSecure.patch(`/product/featured/${id}`, { featured: true });
-    console.log(data)
     if (data?.modifiedCount > 0) {
       toast.success("Product is Featured Successfully");
       refetch();

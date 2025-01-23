@@ -38,7 +38,7 @@ const UserProfile = () => {
         }}
       ></div>
       {/* User Card */}
-      <div className="relative block overflow-hidden rounded-lg border border-appleGreen bg-gradient-to-r from-gray-800 to-gray-900 p-6 shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl glassy-bg">
+      <div className="relative block overflow-hidden rounded-lg border border-appleGreen bg-gradient-to-r from-gray-800 to-gray-900 p-6 shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl glassy-bg my-10">
        {/* Decorative Clip-Path Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-transparent to-gray-900 opacity-20 clip-path-triangle z-[-1]"></div>
         {/* Header Section with Avatar */}

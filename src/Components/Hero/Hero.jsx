@@ -6,7 +6,7 @@ import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 export default function Hero() {
   return (
     <div className="w-full">
-      <div className="mainContainer relative z-10 py-20">
+      <div className="mainContainer relative z-10 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20">
           {/* Text Section */}
           <div>
@@ -25,7 +25,7 @@ export default function Hero() {
           </div>
 
           {/* Slider Section */}
-          <div>
+          <div className="hidden lg:block">
             <Slider></Slider>
           </div>
         </div>

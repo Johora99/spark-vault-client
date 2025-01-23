@@ -46,8 +46,8 @@ const PiChart = ({ statistic }) => {
   const totalValue = data.reduce((acc, curr) => acc + curr.value, 0);
 
   return (
-    <div className="w-full h-[450px] glassy-bg shadow-lg p-6 mb-6 rounded-lg">
-        <div className="flex justify-between mt-6 text-gray-600">
+    <div className="w-full h-[650px] lg:h-[450px] glassy-bg shadow-lg p-6 mb-6 rounded-lg">
+        <div className="flex flex-col lg:flex-row gap-3 justify-between mt-6 text-gray-600">
         {data.map((entry, index) => (
           <div key={index} className="flex items-center space-x-2">
             <div className="w-5 h-5 rounded-full" style={{ backgroundColor: COLORS[index] }}></div>

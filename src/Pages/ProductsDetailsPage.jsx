@@ -40,7 +40,6 @@ await refetch();
 };
 const report = async (id)=>{
   await handleReport(id)
-  console.log(isReport)
   refetch();
 }
   return (
@@ -105,7 +104,7 @@ const report = async (id)=>{
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-10 flex justify-between items-center">
+          <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:justify-between lg:items-center">
             <a
               href={web_link}
               target="_blank"
@@ -114,7 +113,7 @@ const report = async (id)=>{
             >
               Visit Site
             </a>
-            <div className="flex gap-3">
+            <div className="flex flex-col lg:flex-row gap-3">
             <button onClick={()=>vote(_id)} className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-purple-500 transition shadow-lg flex items-center">
             <svg
               className={`w-5 h-5 mr-2 ${isLiked ? 'text-red-500' : 'text-white'}`} 
@@ -128,14 +127,10 @@ const report = async (id)=>{
           </button>
 
           <button
-  className={`px-6 py-3 rounded-lg transition shadow-lg ${
-    isReport
-      ? "bg-gray-800 text-white hover:bg-purple-500" 
-      : "bg-red-600 text-white cursor-not-allowed" 
-  }`}
+  className={`px-6 py-3 rounded-lg transition shadow-lg  bg-gray-800 text-white hover:bg-purple-500"`}
   onClick={() => report(_id)} 
 >
-  {isReport ? "Report Product" : "Reported"}
+  Report Product
 </button>
 
 

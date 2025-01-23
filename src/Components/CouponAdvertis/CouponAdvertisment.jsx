@@ -49,7 +49,7 @@ export default function CouponAdvertisment() {
   <motion.h2
    animate={{ scale: [1, 1.1, 1], color: ["rgb(97, 67, 133)", "rgb(81, 99, 149)", "#614385"] }}
     transition={{ duration: 2, repeat: Infinity }}
-    className="relative text-4xl lg:text-5xl font-bold text-white z-10"
+    className="relative text-3xl lg:text-5xl font-bold text-white z-10 mx-5"
   >
     Grab Your Exclusive Coupons Now!
   </motion.h2>

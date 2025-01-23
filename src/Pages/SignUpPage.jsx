@@ -9,6 +9,7 @@ import { imageData } from "@/api/utilities/imagebb"
 import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
 import useAxiosPublic from "@/Hooks/useAxiosPublic"
 
+
 export default function SignUpPage() {
   const {register,handleSubmit,watch,formState: { errors },reset} = useForm();
   const {creatUser,userUpdateProfile} = useAuth();
@@ -43,10 +44,10 @@ export default function SignUpPage() {
     }
   return (
   
-      <BackgroundBeams>
+    
         <div className="w-full">
            <div className="mainContainer flex items-center justify-center">
-              <div className="lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 mt-10 text-white">
+              <div className="lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-20 text-white">
                 <div>
                   <h2 className="text-4xl font-semibold text-white">Welcome <span className="color-text">Back!</span></h2>
                   <p className="mt-3 mb-20 text-lg ">Log in to your account to continue exploring.</p>
@@ -100,10 +101,11 @@ export default function SignUpPage() {
                <button className="btn-Style btn-grad btn-grad:hover">Sign Up<IoMdLogIn className="text-white text-2xl"/></button>
         </form>
         <p className="font-medium mt-5">Already have an account! <Link to='/logIn' className="color-text"> Log In </Link></p>
+        
               </div>
            </div>
         </div>
   
-      </BackgroundBeams>
+      
   )
 }

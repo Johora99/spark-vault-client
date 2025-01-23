@@ -25,7 +25,7 @@ export default function useAxiosSecure() {
   },async (error) => {
     const status = error.response?.status;
     if (status === 401 || status === 403) {
-      await signOutUser();
+       signOutUser();
       navigate('/logIn',{replace : true})
   
     }

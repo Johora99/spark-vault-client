@@ -7,7 +7,7 @@ import { useState } from "react";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_API);
 export default function PayMentModal({closeModal}) {
   const [couponCode,setCouponCode] = useState('');
-  
+
   return (
       <div>
 <dialog id='payMent' className="modal rounded-2xl">

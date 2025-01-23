@@ -23,7 +23,6 @@ export default function GoogleSignIn() {
                 }
          axiosPublic.post('/user',userInfo)
         .then(res=>{
-        console.log(res.data)
     
       })
       if(location.state?.from){

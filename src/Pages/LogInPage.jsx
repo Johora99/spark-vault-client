@@ -8,6 +8,7 @@ import useAuth from "@/Hooks/useAuth"
 import { useState } from "react"
 
 
+
 export default function LogInPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,9 +33,11 @@ export default function LogInPage() {
     })
   }
   return (
-    <BackgroundBeams>
+       <BackgroundBeams>
+
        <div className="mainContainer flex items-center justify-center">
-          <div className="relative z-10 lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-10 text-white">
+          <div className="relative z-10 lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-20 text-white">
+            
             <div>
               <h2 className="text-4xl font-semibold text-white">Welcome <span className="color-text">Back!</span></h2>
               <p className="mt-3 mb-20 text-lg ">Log in to your account to continue exploring.</p>
@@ -61,15 +64,17 @@ export default function LogInPage() {
            <button className="btn-Style btn-grad btn-grad:hover mt-5">Log In <IoMdLogIn className="text-white text-2xl"/></button>
            <div>
           {
-           error && <p className="text-red-500 mt-2">Please check your credentials and try again.</p>
-             }
+            error && <p className="text-red-500 mt-2">Please check your credentials and try again.</p>
+          }
           </div>
           </form>
            <p className="mt-5">First time on <span className="color-text"> SparkVault </span> ? Let's get you started!    <Link to='/signUp' className="color-text"> Sign Up </Link></p>
+          
     
           </div>
        </div>
+       </BackgroundBeams>
 
-    </BackgroundBeams>
+  
   )
 }

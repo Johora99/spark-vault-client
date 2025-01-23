@@ -28,7 +28,7 @@ const handleReview = async (e)=>{
     e.target.reset();
   }
 } catch (error) {
-  if (error.response && error.response.status === 409) {
+  if (error.response) {
     toast.error(error.response.data.message);
     e.target.reset();
   } else {

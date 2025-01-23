@@ -59,9 +59,10 @@ background-image: linear-gradient(to right, #614385 0%, #516395  51%, #614385  1
   align-items: center;
   justify-content: center;
   border-radius: 18px;
-
+  
   
 }
+
 
 
 /* Custom Clip Path for a jagged, dynamic edge */

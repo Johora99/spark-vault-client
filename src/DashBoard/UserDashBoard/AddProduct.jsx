@@ -49,7 +49,7 @@ const handleDelete = (index) => {
   }
   try {
   const res = await axiosSecure.post('/product', productInfo);
-  console.log(res.data);
+
 
   if (res.data?.insertedId) {
     toast.success('Product has been submitted and is under review!');

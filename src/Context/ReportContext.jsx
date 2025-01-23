@@ -46,6 +46,7 @@ export const ReportProvider = ({ children}) => {
     refetch(); // Refetch to ensure data is in sync with the backend
     } catch (error) {
       console.error("Error posting report:", error);
+      toast.error(error.response?.data?.message)
     }
   }
      return (

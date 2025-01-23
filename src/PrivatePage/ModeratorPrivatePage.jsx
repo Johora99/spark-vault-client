@@ -1,21 +1,23 @@
 import Loading from "@/Components/Loading/Loading";
 import useAuth from "@/Hooks/useAuth";
-import { Navigate } from "react-router";
+import useModerator from "@/Hooks/useModerator";
+import { Navigate, useLocation } from "react-router";
 
 
-export default function ModeratorPrivatePage() {
-const { user,loading} = useAuth; 
-  if(loading){
-        return <Loading></Loading>
-       }
- if(user && user?.role === 'moderator'){
-       return children;
-      }else{
+export default function ModeratorPrivatePage({children}) {
+  const {user,loading} = useAuth();
+  const {isModerator,isPending} = useModerator();
+  if(loading || isPending){
+    return <Loading></Loading>
+  }
+  if(user && isModerator){
+    return children
+  }
         
         return (
           <div>
-          <Navigate state={{from:location.pathname}} to="/logIn"></Navigate>
+          <Navigate to="/logIn"></Navigate>
        </div>
      )
     }
-}
+

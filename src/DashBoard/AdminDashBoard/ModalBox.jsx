@@ -25,7 +25,7 @@ export default function ModalBox({closeModal,coupon,cancelApply,refetch}) {
         if(data?.modifiedCount > 0){
           toast.success('Coupon Update Successfully')
           refetch();
-          closeModal();
+          closeModal(_id);
 
         }
   
@@ -87,6 +87,7 @@ export default function ModalBox({closeModal,coupon,cancelApply,refetch}) {
 
         {/* Submit Button */}
         <motion.button
+        onClick={()=>closeModal(_id)}
           type="submit"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

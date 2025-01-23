@@ -28,11 +28,11 @@ export default function ManageUser() {
   }
   return (
     <div className="px-4 lg:px-16 py-10">
-      <div className="mainContainer mt-20">
+      <div className="mainContainer my-20">
         <motion.h2
           animate={{ color: ["rgb(97, 67, 133)", "rgb(81, 99, 149)", "#614385"] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-4xl font-semibold mb-10 text-center text-gradient"
+          className="text-4xl font-semibold my-20 text-center text-gradient"
         >
           Manage User
         </motion.h2>

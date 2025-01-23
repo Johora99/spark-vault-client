@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 
 export default function CheckoutForm({couponCode,closeModal}) {
-
   const {user} = useAuth();
   const [error,setError] = useState('');
   const [clientSecret,setClientSecret] = useState('');
@@ -27,13 +26,14 @@ export default function CheckoutForm({couponCode,closeModal}) {
       return data;
     }
   });
-  const applyCoupon = () => {
+  const applyCoupon = async () => {
     // Find the matching coupon
-    const matchedCoupon = coupons.find(
+    const matchedCoupon = await coupons.find(
       (coupon) => coupon.couponCode === couponCode
     );
   
     if (matchedCoupon) {
+      console.log(couponCode)
       // Check if the coupon is expired
       const today = new Date();
       const expiryDate = new Date(matchedCoupon.expiryDate);
@@ -41,7 +41,8 @@ export default function CheckoutForm({couponCode,closeModal}) {
 
       if (expiryDate >= today) {
         // Apply the discount
-        setPrice(matchedCoupon.discountAmount);
+        setPrice(100 - matchedCoupon.discountAmount);
+        
         setDiscountMessage(
           `Coupon applied! You received a discount of $${matchedCoupon.discountAmount}.`
         );
@@ -50,9 +51,10 @@ export default function CheckoutForm({couponCode,closeModal}) {
       }
     } 
   };
-
+useEffect(() => {
+  applyCoupon(); // Apply the coupon when couponCode or coupons change
+}, [coupons, couponCode]);
   useEffect(()=>{
-      applyCoupon();
       if(price > 0){
         axiosSecure.post('/create-checkout-session',{price : price})
       .then(res =>{
@@ -97,11 +99,11 @@ export default function CheckoutForm({couponCode,closeModal}) {
     else{
       console.log('payment intent',paymentIntent)
       if(paymentIntent.status === 'succeeded'){
-        console.log('transaction id',paymentIntent.id)
+        // console.log('transaction id',paymentIntent.id)
         setTransaction(paymentIntent.id)
         if(paymentIntent.id){
           const {data} = axiosSecure.patch(`/userStatus/${user?.email}`,{status :'verified'})
-         discountMessage ? toast.success(discountMessage) : toast.success('Your Subscription Successfully Done')
+         toast.success('Your Subscription Successfully Done')
         }
       }
     }
@@ -130,6 +132,9 @@ export default function CheckoutForm({couponCode,closeModal}) {
       </button>
       <p className="text-red-500">{error}</p>
       {transaction && <p className="text-green-500">Your transaction id {transaction}</p>}
+      {
+        discountMessage && <p className="text-green-500 mt-2">{discountMessage}</p>
+      }
     </form>
     </div>
   )
