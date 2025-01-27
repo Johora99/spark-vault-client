@@ -3,6 +3,7 @@ import useAxiosPublic from "@/Hooks/useAxiosPublic";
 
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default function AllProductsPage() {
   const axiosPublic = useAxiosPublic();
@@ -28,6 +29,9 @@ export default function AllProductsPage() {
 
   return (
     <div className="mainContainer my-20">
+       <Helmet>
+        <title>Spark Vault || All Products</title>
+    </Helmet>
       <div className="mb-20 text-center">
         <input
           type="search"

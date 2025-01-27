@@ -6,6 +6,8 @@ import { BackgroundBeams } from "../Components/ui/BackgroundBeams"
 import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
 import useAuth from "@/Hooks/useAuth"
 import { useState } from "react"
+import { Helmet } from "react-helmet"
+import { Meteors } from "@/Components/ui/Meteor"
 
 
 
@@ -33,9 +35,12 @@ export default function LogInPage() {
     })
   }
   return (
-       <BackgroundBeams>
-
+    
+ 
        <div className="mainContainer flex items-center justify-center">
+         <Helmet>
+        <title>Spark Vault || Log In Page</title>
+    </Helmet>
           <div className="relative z-10 lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-20 text-white">
             
             <div>
@@ -69,11 +74,10 @@ export default function LogInPage() {
           </div>
           </form>
            <p className="mt-5">First time on <span className="color-text"> SparkVault </span> ? Let's get you started!    <Link to='/signUp' className="color-text"> Sign Up </Link></p>
-          
     
           </div>
        </div>
-       </BackgroundBeams>
+  
 
   
   )

@@ -8,6 +8,7 @@ import useAuth from "../Hooks/useAuth"
 import { imageData } from "@/api/utilities/imagebb"
 import GoogleSignIn from "@/ShareComponents/GoogleSignIn"
 import useAxiosPublic from "@/Hooks/useAxiosPublic"
+import { Helmet } from "react-helmet"
 
 
 export default function SignUpPage() {
@@ -46,6 +47,9 @@ export default function SignUpPage() {
   
     
         <div className="w-full">
+           <Helmet>
+        <title>Spark Vault || Sign Up Page</title>
+    </Helmet>
            <div className="mainContainer flex items-center justify-center">
               <div className="lg:w-[40%] mx-auto glassy-bg shadow-lg p-10 my-20 text-white">
                 <div>

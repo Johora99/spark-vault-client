@@ -10,6 +10,7 @@ import { Meteors } from "@/Components/ui/Meteor";
 import ShowReview from "@/Components/Review/ShowReview";
 import { useReport } from "@/Context/ReportContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 
 export default function ProductsDetailsPage() {
@@ -44,6 +45,9 @@ const report = async (id)=>{
 }
   return (
     <div className="w-full  text-white">
+       <Helmet>
+        <title>Spark Vault || Product Details</title>
+    </Helmet>
       <div className="mainContainer py-20">
         {/* Card Section */}
         <div className="card-bg glassy-bg p-10 rounded-lg shadow-lg mx-auto max-w-4xl">
