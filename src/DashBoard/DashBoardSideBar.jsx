@@ -29,15 +29,24 @@ export default function DashBoardSideBar() {
     
       <li className="flex items-center gap-2">
         <IoHome />
-        <NavLink to='/dashBoard/userProfile'>My Profile</NavLink>
+        <NavLink to='/dashBoard/userProfile' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>My Profile</NavLink>
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>
-        <NavLink to='/dashBoard/addProduct'>Add Product</NavLink>
+        <NavLink to='/dashBoard/addProduct' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Add Product</NavLink>
       </li>
       <li className="flex items-center gap-2">
         <AiFillProduct />
-        <NavLink to='/dashBoard/myAddedProduct'>My Products</NavLink>
+        <NavLink to='/dashBoard/myAddedProduct' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>My Products</NavLink>
       </li>
     </ul>
   
@@ -46,21 +55,33 @@ export default function DashBoardSideBar() {
     <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
       <li className="flex items-center gap-2 mb-3">
         <IoHome />
-        <NavLink to='/dashBoard/adminProfile'>
-          Admin Profile
+        <NavLink to='/dashBoard/adminProfile' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>
+        My Profile
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <IoHome />
-        <NavLink to='/dashBoard/statistic'>Statistics Page</NavLink>
+        <NavLink to='/dashBoard/statistic' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Statistics Page</NavLink>
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>
-        <NavLink to='/dashBoard/manageUser'>Manage Users</NavLink>
+        <NavLink to='/dashBoard/manageUser' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Manage Users</NavLink>
       </li>
       <li className="flex items-center gap-2">
         <AiFillProduct />
-        <NavLink to='/dashBoard/manageCoupon'>Manage Coupons</NavLink>
+        <NavLink to='/dashBoard/manageCoupon' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Manage Coupons</NavLink>
       </li>
     
     </ul>
@@ -68,13 +89,26 @@ export default function DashBoardSideBar() {
 } 
 {isModerator && 
     <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
+          <li className="flex items-center gap-2 mb-3">
+        <IoHome />
+        <NavLink to='/dashBoard/moderatorProfile'  className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>My Profile</NavLink>
+      </li>
       <li className="flex items-center gap-2">
         <IoHome />
-        <NavLink to='/dashBoard/manageProduct'>Product Review Queue</NavLink>
+        <NavLink to='/dashBoard/manageProduct' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Product Review Queue</NavLink>
       </li>
       <li className="my-3 flex items-center gap-2">
         <FaUtensils className='text-xl'/>
-        <NavLink to='/dashBoard/reportedProduct'>Reported Contents</NavLink>
+        <NavLink to='/dashBoard/reportedProduct' className={({ isActive }) =>
+      isActive
+        && "text-appleGreen" 
+    }>Reported Contents</NavLink>
       </li>
 
     </ul>

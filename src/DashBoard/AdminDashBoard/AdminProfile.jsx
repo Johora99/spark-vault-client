@@ -1,10 +1,7 @@
 import { Meteors } from "@/Components/ui/Meteor";
-import useOneUser from "@/Hooks/useOneUser";
-import { useState } from "react";
 import useAuth from "@/Hooks/useAuth";
 
 export default function AdminProfile() {
-  const { userData } = useOneUser();
   const { user } = useAuth();
 
   console.log(user)
