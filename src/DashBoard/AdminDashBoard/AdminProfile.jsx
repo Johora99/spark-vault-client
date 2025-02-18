@@ -1,33 +1,18 @@
 import { Meteors } from "@/Components/ui/Meteor";
-import useAuth from "@/Hooks/useAuth";
 import useOneUser from "@/Hooks/useOneUser";
-import PayMentModal from "./PayMentModal";
 import { useState } from "react";
+import useAuth from "@/Hooks/useAuth";
 
 export default function AdminProfile() {
   const { userData } = useOneUser();
-    const { user } = useAuth();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  
-    const openModal = () => {
-    const modal = document.getElementById("payMent");
-    if (modal) {
-      modal.showModal(); // Open the modal
-      setIsModalOpen(true);
-    }
-  };
-  
-     const closeModal = () => {
-    const modal = document.getElementById('payMent');
-    setIsModalOpen(false);
-    if (modal) {
-      modal.close();
-    }
-  };
+  const { user } = useAuth();
+
+  console.log(user)
+
   return (
     <div className="w-full min-h-screen bg-gray-900 flex items-center justify-center relative">
         {/* Top Decorative Shape */}
+        
         <div
           className="absolute top-0 left-0 w-full h-72 bg-gradient-to-r from-purple-900/30 via-blue-800/30 to-purple-900/30"
           style={{
@@ -55,42 +40,14 @@ export default function AdminProfile() {
               {user?.displayName || "Guest User"}
             </h1>
             <p className="text-gray-400">{user?.email || "No Email Provided"}</p>
+            <p className="text-xl text-green-600 font-medium mt-3">Admin</p>
           </div>
   
-          {/* Membership Section */}
-          <div className="mt-8 px-6">
-            {userData?.status === 'unverified' && (
-              <div className="text-center">
-                <button onClick={openModal} className="w-full text-white py-3 px-6 rounded-md shadow-md font-medium btn-grad transition-all duration-300">
-                  Subscribe to Membership
-                </button>
-                <p className="text-sm text-gray-400 mt-2">
-                  Unlock exclusive benefits and features.
-                </p>
-              </div>
-            ) }
-          </div>
-  
-          {/* Membership Benefits */}
-          {userData?.status === 'verified' && (
-            <div className="mt-8 px-6 text-center">
-            <h3
-    className="text-lg font-bold text-center px-6 py-3 mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-2 border-teal-300 shadow-lg neon-glow relative"
-    style={{
-      clipPath: "polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%)",
-    }}
-  >
-    Status: Verified ✅
-  </h3>
-  
-            </div>
-          )}
+          
   
             <Meteors number={30} className="custom-meteor-class" />
         </div>
-         <div>
-          <PayMentModal closeModal={closeModal}></PayMentModal>
-         </div>
+      
         {/* Bottom Decorative Shape */}
         <div
           className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-r from-purple-900/30 via-blue-800/30 to-purple-900/30"
@@ -98,7 +55,6 @@ export default function AdminProfile() {
             clipPath: "polygon(0 30%, 100% 0, 100% 100%, 0 100%)",
           }}
         ></div>
-        
       </div>
   )
 }
