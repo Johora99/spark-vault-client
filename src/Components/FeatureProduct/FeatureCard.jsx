@@ -25,7 +25,9 @@ const vote = async (id) => {
     >
       <div className="sm:flex sm:justify-between sm:items-center sm:gap-4">
         <div>
+          <Link to={`/product/${_id}`}>
           <h3 className="text-2xl font-semibold text-white">{product_name}</h3>
+          </Link>
           <p className="mt-1 text-sm font-medium text-gray-300">By {owner_name}</p>
         </div>
 
@@ -58,9 +60,9 @@ const vote = async (id) => {
             <FaThumbsUp className="text-purple-300" />
             {votes}
           </button>
-          <Link to={`/product/${_id}`}>
+          {/* <Link to={`/product/${_id}`}>
           <button className="flex items-center gap-1 rounded-lg bg-gray-800 px-3 py-2 text-sm text-white hover:bg-purple-500 hover:text-white transition">Details</button>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Timestamp */}

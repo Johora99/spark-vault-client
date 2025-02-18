@@ -1,6 +1,5 @@
 
 import Slider from "../Slider/Slider";
-import { Meteors } from "../ui/Meteor";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 
 export default function Hero() {
@@ -29,9 +28,9 @@ export default function Hero() {
             <Slider></Slider>
           </div>
         </div>
+      
            
       </div>
-      <Meteors number={40} className="custom-meteor-class" />
     </div>
   );
 }

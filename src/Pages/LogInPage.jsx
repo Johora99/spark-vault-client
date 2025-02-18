@@ -53,14 +53,14 @@ export default function LogInPage() {
       
             <Divider text={'Or login with email'}></Divider>
           <form onSubmit={handleSubmit(onSubmit)}>
-             <label className=" w-full ">
+             <label className=" w-full mb-8 inline-block">
             <div className="label">
            <span className="label-text text-lg font-medium">Email Address</span>
            </div>
-           <input type="text" {...register("email",{ required: true })} name="email" placeholder="Enter Your Email Address" className="input-field mb-8" />
-           {errors.email && <span className=" text-red-500 mt-1 inline-block">Enter Your email</span>}
+           <input type="text" {...register("email",{ required: true })} name="email" placeholder="Enter Your Email Address" className="input-field" />
+           {errors.email && <span className=" text-red-500 mt-1 inline-block">Enter Your email</span>} <br />
           </label>
-           <label htmlFor="" className="">
+           <label className="w-full">
             <span className="label-text text-lg font-medium">Password</span>
             <input type="password" {...register("password",{ required: true })} name="password" placeholder="Enter Your Password" className="input-field" />
             {errors.password && <span className=" text-red-500 mt-1 inline-block">Enter Your Password</span>}

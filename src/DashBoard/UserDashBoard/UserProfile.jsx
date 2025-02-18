@@ -10,7 +10,6 @@ const UserProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-
   const openModal = () => {
   const modal = document.getElementById("payMent");
   if (modal) {
@@ -20,7 +19,6 @@ const UserProfile = () => {
 };
 
    const closeModal = () => {
-    console.log('close')
   const modal = document.getElementById('payMent');
   setIsModalOpen(false);
   if (modal) {

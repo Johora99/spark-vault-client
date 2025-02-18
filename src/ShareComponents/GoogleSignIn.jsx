@@ -19,7 +19,7 @@ export default function GoogleSignIn() {
               email : res.user?.email,
               image : res.user?.photoURL,
               role : 'user',
-              Status: 'unverified',
+              status: 'unverified',
                 }
          axiosPublic.post('/user',userInfo)
         .then(res=>{

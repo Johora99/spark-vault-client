@@ -52,7 +52,7 @@ const signOutUser = ()=>{
   setLoading(true)
  signOut(auth)
  .then(res =>{
-  console.log(res);
+  
  })
  .catch(err =>{
   console.log(err)

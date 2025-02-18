@@ -32,7 +32,6 @@ export default function SignUpPage() {
       await userUpdateProfile(name,photoURL)
       await axiosPublic.post('/user',userInfo)
       .then(res=>{
-        console.log(res.data)
         navigate('/');
         reset();
       })

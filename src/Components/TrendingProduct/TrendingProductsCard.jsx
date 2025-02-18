@@ -39,7 +39,9 @@ const vote = async (id) => {
         </div>
 
         {/* Product Name */}
+        <Link to={`/product/${_id}`}>
         <h3 className="text-xl font-bold text-white text-center">{product_name}</h3>
+        </Link>
 
         {/* Product Added By */}
         <p className="text-sm text-gray-400 text-center">Added by {owner_name}</p>
@@ -75,9 +77,9 @@ const vote = async (id) => {
             </svg>
             Like ({votes || 0})
           </button>
-          <Link to={`/product/${_id}`}>
+          {/* <Link to={`/product/${_id}`}>
           <button className="btn-grad py-2 px-5 text-sm">Details</button>
-          </Link>
+          </Link> */}
     <Meteors number={30} className="custom-meteor-class" />
         </div>
       </div>
