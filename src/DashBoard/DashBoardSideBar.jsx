@@ -44,6 +44,12 @@ export default function DashBoardSideBar() {
 }
   { isAdmin && 
     <ul className='mt-10 *:text-white *:text-lg *:font-medium'>
+      <li className="flex items-center gap-2 mb-3">
+        <IoHome />
+        <NavLink to='/dashBoard/adminProfile'>
+          Admin Profile
+        </NavLink>
+      </li>
       <li className="flex items-center gap-2">
         <IoHome />
         <NavLink to='/dashBoard/statistic'>Statistics Page</NavLink>
